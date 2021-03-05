@@ -35,11 +35,11 @@ public class DAO {
 	private champ champ;
 	
 
-	 String aid = null;
+	 static String aid = null;
 	 String sid = null;
 	 String pid = null;
-	String api = "RGAPI-a531df28-32d7-4b3e-bbf7-78897704cbd4";
-	HttpsURLConnection huc = null;
+	static String api = "RGAPI-77f1a3fd-d098-4010-b2a3-46cd785fe789";
+	static HttpsURLConnection huc = null;
 	HttpURLConnection huc2 = null;
 
 	public void apiver(HttpServletRequest request) {
@@ -94,7 +94,7 @@ public class DAO {
 
 	}
 	
-	public ArrayList<gid> gameId() {
+	public static ArrayList<gid> gameId() {
 
 		try {
 			String url = "https://kr.api.riotgames.com/lol/match/v4/matchlists/by-account/";
@@ -182,7 +182,8 @@ public class DAO {
 				for (int i = 0; i < participants.size(); i++) {
 					JSONObject j = (JSONObject) participants.get(i);
 					JSONObject j2 = (JSONObject) j.get("stats");
-					if (j.get("participantId").equals(pid)) {
+					String participantId = String.valueOf(j.get("participantId"));
+					if (participantId.equals(pid)) {
 						String win = String.valueOf(j2.get("win"));
 						if(win.equals("true")){
 							wins+=1; 

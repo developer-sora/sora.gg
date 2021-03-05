@@ -27,7 +27,7 @@ public class HomeController {
 	@RequestMapping(value = "search", method = RequestMethod.GET)
 	public String search(HttpServletRequest req) {
 			dao.sumsearch(req);
-		//	dao.winningRate(req);
+			dao.winningRate(req);
 			dao.matchl(req);
 			dao.ingamenow(req);
 			
@@ -39,8 +39,8 @@ public class HomeController {
 	@RequestMapping(value = "matchsearch", method = RequestMethod.GET)
 	public String matchsearch(HttpServletRequest req) {
 		dao.sumsearch(req);
-		//	dao.winningRate(req);
-	//	dao.matchl(req);
+		dao.winningRate(req);
+		dao.matchl(req);
 		dao.matchlsearch(req);
 		dao.ingamenow(req);
 		

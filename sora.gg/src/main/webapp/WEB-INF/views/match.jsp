@@ -39,10 +39,8 @@
 <body>
 
 	<c:if test="${nodata ne 2 }">
-		<p>
-			<%-- 20전  ${win }승   ${lose }패
-<p>
-승률 ${winRate}% --%>
+		<p>20전  ${win }승   ${lose }패<p>
+승률 ${winRate}% <p>
 			<!-- <input id = "price"> -->
 
 			<!-- <form>
