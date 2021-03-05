@@ -1,0 +1,1 @@
+# sora.gg.majimak
