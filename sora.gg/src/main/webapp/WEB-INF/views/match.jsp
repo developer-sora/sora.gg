@@ -25,7 +25,7 @@
 	
 	$(function() {
 
-		$("#price1").change(function() {
+		$("#qt").change(function() {
 		/* 	alert($("#price1").val());
 			
 			alert($(this).children("option:selected").val()); */
@@ -39,21 +39,11 @@
 <body>
 
 	<c:if test="${nodata ne 2 }">
-		<p>20전  ${win }승   ${lose }패<p>
-승률 ${winRate}% <p>
-			<!-- <input id = "price"> -->
+<%-- 		<p>20전  ${win }승   ${lose }패<p>
+승률 ${winRate}% <p> --%>
 
-			<!-- <form>
-<select >
-<option >게임 타입</option>
-<option onclick="search(420)" id="price" value="420">솔로 랭크게임</option>
-<option id="price" value="440">자유 랭크게임</option>
-<option id="price" value="430">일반 게임</option>
-<option id="price" value="450">무작위 총력전</option>
-</select>
-</form> -->
 		<form>
-			<select id="price1">
+			<select id="qt">
 				<option>게임 타입</option>
 				<option id="asd" value="420">솔로 랭크게임</option>
 				<option id="asd" value="440">자유 랭크게임</option>

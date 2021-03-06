@@ -38,7 +38,7 @@ public class DAO {
 	 static String aid = null;
 	 String sid = null;
 	 String pid = null;
-	static String api = "RGAPI-77f1a3fd-d098-4010-b2a3-46cd785fe789";
+	static String api = "RGAPI-a531df28-32d7-4b3e-bbf7-78897704cbd4";
 	static HttpsURLConnection huc = null;
 	HttpURLConnection huc2 = null;
 
