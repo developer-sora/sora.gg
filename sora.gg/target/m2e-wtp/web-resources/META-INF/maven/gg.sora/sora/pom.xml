@@ -14,6 +14,13 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	<dependencies>
+	
+	<!-- google API library -->
+        <dependency>
+     <groupId>com.google.api-client</groupId>
+     <artifactId>google-api-client</artifactId>
+     <version>1.30.8</version>
+   </dependency>
 	     
   <!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
 <dependency>
