@@ -92,4 +92,19 @@ public class RankerRateDAO {
 		}
 
 	}
+	
+	
+	public void getchallmatchlist(challlist c, HttpServletRequest req) {
+ArrayList<challlist> challs = ss.getMapper(Mapper.class).getchall(c);
+	for (int i = 0; i < challs.size(); i++) {
+		String aid = challs.get(i).getS_aid();
+		
+
+	}
+
+
+		}
+	
+	
+	
 }

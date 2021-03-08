@@ -5,6 +5,8 @@
 insert into toprankeruser values(#{s_name}, #{s_aid})
 </insert>
 
-
+<select id="getchall" resultType="gg.sora.otherDTO.challlist">
+select * from toprankeruser
+</select>
 
 </mapper>
