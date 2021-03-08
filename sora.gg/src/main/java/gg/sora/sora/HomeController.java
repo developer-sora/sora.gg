@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import gg.sora.dao.DAO;
+import gg.sora.dao.RankerRateDAO;
 import gg.sora.dao.timelineDAO;
+import gg.sora.otherDTO.challlist;
 
 @Controller
 public class HomeController {
@@ -17,6 +19,8 @@ public class HomeController {
 	private DAO dao;
 	@Autowired
 	private timelineDAO tdao;
+	@Autowired
+	private RankerRateDAO rdao;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpServletRequest req) {
@@ -77,5 +81,23 @@ public class HomeController {
 		req.setAttribute("summonerPage", "matchTimeline.jsp");
 		return "index";
 	}
+	@RequestMapping(value = "chal", method = RequestMethod.GET)
+	public String chell() {
+	
+		
+		return "rate/testpage";
+	}
+	@RequestMapping(value = "challlist", method = RequestMethod.GET)
+	public String chelllistupdate(challlist c, HttpServletRequest req) {
+	rdao.challsave(c, req);
+		
+		return "rate/testpage";
+	}
+//	@RequestMapping(value = "challlist", method = RequestMethod.GET)
+//	public String chelllistupdate(challlist c, HttpServletRequest req) {
+//		rdao.challsave(c, req);
+//		
+//		return "rate/testpage";
+//	}
 
 }
