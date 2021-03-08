@@ -6,4 +6,5 @@ public interface Mapper {
 
 	public int challlistreg(challlist c);
 
+	
 }

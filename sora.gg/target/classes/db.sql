@@ -15,7 +15,7 @@ create table toprankeruser (
 s_name varchar2 (100 char) primary key,
 s_aid varchar2 (100 char) not null
 );
-
+select * from  toprankeruser;
 DROP TABLE toprankeruser CASCADE CONSTRAINT;
 
 -- 만드러짐

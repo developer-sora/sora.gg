@@ -11,6 +11,7 @@
 <a href="challlist"><button>첼린저 목록 초기화</button></a>
 
 ${regr }
+123
 
 </body>
 </html>

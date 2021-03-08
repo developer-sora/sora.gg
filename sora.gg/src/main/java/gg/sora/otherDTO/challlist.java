@@ -4,7 +4,6 @@ public class challlist {
 private String s_name;
 private String s_aid;
 public challlist() {
-	// TODO Auto-generated constructor stub
 }
 public challlist(String s_name, String s_aid) {
 	super();

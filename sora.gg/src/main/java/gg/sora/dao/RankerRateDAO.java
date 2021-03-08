@@ -88,6 +88,7 @@ public class RankerRateDAO {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			//
 		}
 
 	}

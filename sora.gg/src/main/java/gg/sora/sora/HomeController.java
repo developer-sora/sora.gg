@@ -93,5 +93,11 @@ public class HomeController {
 		
 		return "rate/testpage";
 	}
+//	@RequestMapping(value = "challlist", method = RequestMethod.GET)
+//	public String chelllistupdate(challlist c, HttpServletRequest req) {
+//		rdao.challsave(c, req);
+//		
+//		return "rate/testpage";
+//	}
 
 }
