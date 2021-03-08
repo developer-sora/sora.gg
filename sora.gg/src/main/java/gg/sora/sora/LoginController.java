@@ -69,7 +69,7 @@ public class LoginController {
 //		  String pictureUrl = (String) payload.get("picture");
 //		  String locale = (String) payload.get("locale");
 //		  String familyName = (String) payload.get("family_name");
-		  String givenName = (String) payload.get("given_name");
+//		  String givenName = (String) payload.get("given_name");
 
 		  
 		  System.out.println(email);
