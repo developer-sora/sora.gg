@@ -111,5 +111,6 @@
 	<beans:bean id="c" class="gg.sora.dao.RunAndSpell"></beans:bean>
 	<beans:bean id="d" class="gg.sora.dao.DAO"></beans:bean>
 	<beans:bean id="e" class="gg.sora.dao.timelineDAO"></beans:bean>
+	<beans:bean id="f" class="gg.sora.dao.RankerRateDAO"></beans:bean>
 
 </beans:beans>
