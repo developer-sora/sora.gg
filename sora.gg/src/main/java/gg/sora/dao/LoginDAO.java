@@ -11,6 +11,7 @@ import gg.sora.dto.userID;
 
 public class LoginDAO {
 
+	
 	@Autowired
 	private SqlSession ss;
 	
