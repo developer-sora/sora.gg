@@ -28,6 +28,27 @@ insert into toprankeruser values(#{s_name}, #{s_aid})
 <select id="getchall" resultType="gg.sora.otherDTO.challlist">
 select * from toprankeruser
 </select>
+<select id="getchallgameid" resultType="gg.sora.otherDTO.GameId">
+select * from toprankergame
+</select>
+<select id="getchallban" resultType="gg.sora.otherDTO.challchampban">
+SELECT banchamp, COUNT(*) FROM champban GROUP BY banchamp HAVING COUNT(*)>5 order by count(*) desc;
+</select>
+<select id="getchallpick" resultType="gg.sora.otherDTO.challchampick">
+SELECT pickchamp, COUNT(*) FROM champpick GROUP BY pickchamp HAVING COUNT(*)>5 order by count(*) desc;
+</select>
+
+<insert id="gameidreg" parameterType="gg.sora.otherDTO.GameId">
+insert into toprankergame values(${g_number})
+</insert>
+<insert id="pickreg" parameterType="gg.sora.otherDTO.challchampick">
+insert into champpick values(${pickchamp})
+</insert>
+<insert id="banreg" parameterType="gg.sora.otherDTO.challchampban">
+insert into champban values(${banchamp})
+</insert>
+
+
 
 
 
