@@ -2,6 +2,7 @@ package gg.sora.dao;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -15,19 +16,20 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import gg.sora.dto.matchlistDTO;
 import gg.sora.otherDTO.challlist;
 public class RankerRateDAO {
 	
 	@Autowired
 	private SqlSession ss;
 	
+	String api = "RGAPI-a531df28-32d7-4b3e-bbf7-78897704cbd4";
 	
 	
 	public ArrayList<String> challlist() {
 		ArrayList<String> topchall = new ArrayList<String>();
 		
 		
-		String api = "RGAPI-a531df28-32d7-4b3e-bbf7-78897704cbd4";
 		try {
 			
 			String url = "https://kr.api.riotgames.com/lol/league/v4/challengerleagues/by-queue/RANKED_SOLO_5x5";
@@ -98,6 +100,29 @@ public class RankerRateDAO {
 ArrayList<challlist> challs = ss.getMapper(Mapper.class).getchall(c);
 	for (int i = 0; i < challs.size(); i++) {
 		String aid = challs.get(i).getS_aid();
+		try {
+			String url = "https://kr.api.riotgames.com/lol/match/v4/matchlists/by-account/";
+			url = url + aid + "?queue=420&api_key=" + api;
+			URL u = new URL(url);
+			HttpURLConnection huc = (HttpsURLConnection) u.openConnection();
+			InputStream is = huc.getInputStream();
+			InputStreamReader isr = new InputStreamReader(is, "utf-8");
+
+			JSONParser jp = new JSONParser();
+			JSONObject loldata = (JSONObject) jp.parse(isr);
+			JSONArray jjs = (JSONArray) loldata.get("matches");
+			ArrayList<matchlistDTO> matchlist = new ArrayList<matchlistDTO>();
+for (int j = 0; j < 3; j++) {
+				
+				matchlistDTO dto = new matchlistDTO();
+				JSONObject jj = (JSONObject) jjs.get(i);
+				 jj.get("gameId"); // DTO 만들어서 이거 넣고 DB에 등록
+}
+		}
+		
+		catch (Exception e) {
+			// TODO: handle exception
+		}
 		
 
 	}
