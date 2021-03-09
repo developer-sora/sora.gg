@@ -469,7 +469,8 @@ public class champ {
 			 
 		case 526:
 			return "Rell";
-			 
+		case -1 :
+			return null;
 
 		default:
 			return "오류";
@@ -940,7 +941,8 @@ public class champ {
 			 
 		case 234:
 			return "비에고";
-			 
+		case -1 :
+			return "없음";
 
 		default:
 			return "없음";

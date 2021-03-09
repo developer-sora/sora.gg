@@ -21,12 +21,18 @@
 <!-- <link rel="stylesheet" href="css/css.css"> -->
   <link href="resources/css/css.css" rel="stylesheet" >
 <meta charset="utf-8">
+
 <title>sora.gg</title>
 </head>
 <body>
+
 <div class="container">
     <br/>
-
+<a href="community">커뮤니티
+</a>    
+<a href="login">
+<button>로그인</button>
+</a>
     <jsp:include page="${contentPage}"></jsp:include>
 
 </div>

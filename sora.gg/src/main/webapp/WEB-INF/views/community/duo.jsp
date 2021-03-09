@@ -8,12 +8,5 @@
 </head>
 <body>
 
-<a href="challlist"><button>첼린저 목록 초기화</button></a>
-<a href="challgamereg"><button>gameid</button></a>
-<a href="champreg"><button>참프등록</button></a>
-
-${regr }
-123
-
 </body>
 </html>

@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import gg.sora.dao.DAO;
 import gg.sora.dao.RankerRateDAO;
 import gg.sora.dao.timelineDAO;
+import gg.sora.otherDTO.GameId;
+import gg.sora.otherDTO.challchampban;
+import gg.sora.otherDTO.challchampick;
 import gg.sora.otherDTO.challlist;
 
 @Controller
@@ -93,11 +96,17 @@ public class HomeController {
 		
 		return "rate/testpage";
 	}
-//	@RequestMapping(value = "challlist", method = RequestMethod.GET)
-//	public String chelllistupdate(challlist c, HttpServletRequest req) {
-//		rdao.challsave(c, req);
-//		
-//		return "rate/testpage";
-//	}
+	@RequestMapping(value = "challgamereg", method = RequestMethod.GET)
+	public String chellgamereg(challlist c, GameId g) {
+		rdao.getchallmatchlist(c, g);
+		
+		return "rate/testpage";
+	}
+	@RequestMapping(value = "champreg", method = RequestMethod.GET)
+	public String champ(challchampick cp, challchampban cb, GameId g, HttpServletRequest req) {
+		rdao.champreg(cb, cp, g);
+		req.setAttribute("regr", "챔프등록됨");
+		return "rate/testpage";
+	}
 
 }

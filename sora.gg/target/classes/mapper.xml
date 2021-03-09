@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="gg.sora.dao.Mapper">
+
+<!-- <insert id="googleLogin" parameterType="gg.sora.dto.google"> -->
+<!-- 	insert into google_id values -->
+<!-- 	(#{g_email},#{g_given_name}) -->
+<!-- </insert> -->
+
 <insert id="challlistreg" parameterType="gg.sora.otherDTO.challlist">
 insert into toprankeruser values(#{s_name}, #{s_aid})
 </insert>
@@ -8,5 +14,27 @@ insert into toprankeruser values(#{s_name}, #{s_aid})
 <select id="getchall" resultType="gg.sora.otherDTO.challlist">
 select * from toprankeruser
 </select>
+<select id="getchallgameid" resultType="gg.sora.otherDTO.GameId">
+select * from toprankergame
+</select>
+<select id="getchallban" resultType="gg.sora.otherDTO.challchampban">
+SELECT banchamp, COUNT(*) FROM champban GROUP BY banchamp HAVING COUNT(*)>5 order by count(*) desc;
+</select>
+<select id="getchallpick" resultType="gg.sora.otherDTO.challchampick">
+SELECT pickchamp, COUNT(*) FROM champpick GROUP BY pickchamp HAVING COUNT(*)>5 order by count(*) desc;
+</select>
+
+<insert id="gameidreg" parameterType="gg.sora.otherDTO.GameId">
+insert into toprankergame values(${g_number})
+</insert>
+<insert id="pickreg" parameterType="gg.sora.otherDTO.challchampick">
+insert into champpick values(${pickchamp})
+</insert>
+<insert id="banreg" parameterType="gg.sora.otherDTO.challchampban">
+insert into champban values(${banchamp})
+</insert>
+
+
+
 
 </mapper>
