@@ -23,6 +23,8 @@
 <meta charset="utf-8">
 
 <title>sora.gg</title>
+<script type="text/javascript" src="resources/js/check.js"></script>
+<script type="text/javascript" src="resources/js/validCheck.js"></script>
 </head>
 <body>
 
@@ -30,9 +32,21 @@
     <br/>
 <a href="community">커뮤니티
 </a>    
-<a href="login">
+
+<c:choose>
+<c:when test="${sessionScope.loginUser eq null }">
+<a href="login" >
 <button>로그인</button>
 </a>
+</c:when>
+<c:otherwise>
+<a href="logout" >
+<button>로그아웃</button>
+</a>
+</c:otherwise>
+</c:choose>
+
+ <%-- 	<jsp:include page="${loginPage}"></jsp:include> --%>
     <jsp:include page="${contentPage}"></jsp:include>
 
 </div>

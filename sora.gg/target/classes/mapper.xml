@@ -7,6 +7,20 @@
 <!-- 	(#{g_email},#{g_given_name}) -->
 <!-- </insert> -->
 
+<insert id="join" parameterType="gg.sora.dto.userID">
+insert into user_id values(#{u_email}, #{u_nickname}, #{u_password})
+</insert>
+
+<select id="getUserByID" resultType="gg.sora.dto.userID">
+select * from user_id where u_email = #{u_email}
+
+</select>
+
+<select id="idCheck" resultType="int">
+	SELECT COUNT(*) FROM user_id
+	WHERE u_email = #{u_email}
+</select>
+
 <insert id="challlistreg" parameterType="gg.sora.otherDTO.challlist">
 insert into toprankeruser values(#{s_name}, #{s_aid})
 </insert>
@@ -14,6 +28,8 @@ insert into toprankeruser values(#{s_name}, #{s_aid})
 <select id="getchall" resultType="gg.sora.otherDTO.challlist">
 select * from toprankeruser
 </select>
+
+
 
 
 </mapper>
