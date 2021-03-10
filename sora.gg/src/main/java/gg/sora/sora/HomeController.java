@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import gg.sora.dao.DAO;
 import gg.sora.dao.RankerRateDAO;
 import gg.sora.dao.timelineDAO;
+import gg.sora.otherDTO.ChampionName;
 import gg.sora.otherDTO.GameId;
 import gg.sora.otherDTO.challchampban;
 import gg.sora.otherDTO.challchampick;
@@ -110,6 +111,7 @@ public class HomeController {
 	}
 	@RequestMapping(value = "champresult", method = RequestMethod.GET)
 	public String champre(challchampick cp, challchampban cb, HttpServletRequest req) {
+		dao.apiver(req);
 		rdao.banpicks(cb, cp, req);;
 		return "rate/test2page";
 	}

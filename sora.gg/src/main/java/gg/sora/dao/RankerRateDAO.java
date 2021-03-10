@@ -20,6 +20,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import gg.sora.otherDTO.ChampionName;
 import gg.sora.otherDTO.GameId;
 import gg.sora.otherDTO.challchampban;
 import gg.sora.otherDTO.challchampick;
@@ -267,15 +268,57 @@ public class RankerRateDAO {
 
 	
 	
-public void banpicks(challchampban cb ,challchampick cp, HttpServletRequest req) {
+public void banpicks(challchampban cb ,challchampick cp,HttpServletRequest req) {
 ArrayList<challchampban> challbans = ss.getMapper(Mapper.class).getchallban(cb);
 ArrayList<challchampick> challpicks =ss.getMapper(Mapper.class).getchallpick(cp);
+ArrayList<ChampionName> bannames = new ArrayList<ChampionName>();
+ArrayList<ChampionName> picknames = new ArrayList<ChampionName>();
 
-System.out.println(challbans.get(0).getBenchamp());;
-System.out.println(challbans.get(1).getBenchamp());;
-System.out.println(challbans.get(2).getBenchamp());;
-System.out.println(challbans.get(3).getBenchamp());;
-	req.setAttribute("cbl", challbans);
-	req.setAttribute("cpl", challpicks);
+for (int i = 0; i < 5; i++) {
+	ChampionName cn1 = new ChampionName();
+cn1.setChampionEn(champ.champnameEn(challbans.get(i).getBenchamp()));
+System.out.println(champ.champnameEn(challbans.get(i).getBenchamp()));
+cn1.setChampionKr(champ.champnameKr(challbans.get(i).getBenchamp()));	
+	bannames.add(cn1);
+}
+for (int i = 0; i < 5; i++) {
+	ChampionName cn2 = new ChampionName();
+	System.out.println("_______________________");
+	cn2.setChampionEn(champ.champnameEn(challpicks.get(i).getPickchamp()));	
+	System.out.println(champ.champnameEn(challpicks.get(i).getPickchamp()));
+	cn2.setChampionKr(champ.champnameKr(challpicks.get(i).getPickchamp()));	
+	picknames.add(cn2);
+}
+//for (int i = 0; i < 5; i++) {
+//System.out.println(picknames.get(i).getChampionEn());	
+//System.out.println(picknames.get(i).getChampionKr());	
+//}
+//for (int i = 0; i < 5; i++) {
+//	System.out.println(bannames.get(i).getChampionEn());	
+//	System.out.println(bannames.get(i).getChampionKr());	
+//}
+//champ.champnameEn(challbans.get(1).getBenchamp());
+//champ.champnameKr(challbans.get(1).getBenchamp());
+//champ.champnameEn(challbans.get(2).getBenchamp());
+//champ.champnameKr(challbans.get(2).getBenchamp());
+//champ.champnameEn(challbans.get(3).getBenchamp());
+//champ.champnameKr(challbans.get(3).getBenchamp());
+//champ.champnameEn(challbans.get(4).getBenchamp());
+//champ.champnameKr(challbans.get(4).getBenchamp());
+//
+//
+//champ.champnameKr(challpicks.get(0).getPickchamp());
+//champ.champnameEn(challpicks.get(0).getPickchamp());
+//champ.champnameKr(challpicks.get(1).getPickchamp());
+//champ.champnameEn(challpicks.get(1).getPickchamp());
+//champ.champnameKr(challpicks.get(2).getPickchamp());
+//champ.champnameEn(challpicks.get(2).getPickchamp());
+//champ.champnameKr(challpicks.get(3).getPickchamp());
+//champ.champnameEn(challpicks.get(3).getPickchamp());
+//champ.champnameKr(challpicks.get(4).getPickchamp());
+//champ.champnameEn(challpicks.get(4).getPickchamp());
+
+	req.setAttribute("cbl", bannames);
+	req.setAttribute("cpl", picknames);
 }
 }
