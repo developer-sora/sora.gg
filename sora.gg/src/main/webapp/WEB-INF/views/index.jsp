@@ -30,8 +30,10 @@
 
 <div class="container">
     <br/>
+    <a href="main">홈으로</a>
 <a href="community">커뮤니티
 </a>    
+<a href="chal">통계보기</a>
 
 <c:choose>
 <c:when test="${sessionScope.loginUser eq null }">

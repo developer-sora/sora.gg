@@ -47,6 +47,11 @@ public class HomeController {
 		req.setAttribute("contentPage", "search.jsp");
 		return "index";
 	}
+	@RequestMapping(value = "main", method = RequestMethod.GET)
+	public String home2(HttpServletRequest req) {
+		req.setAttribute("contentPage", "search.jsp");
+		return "index";
+	}
 
 	@RequestMapping(value = "search", method = RequestMethod.GET)
 	public String search(HttpServletRequest req) {
@@ -102,68 +107,66 @@ public class HomeController {
 		return "index";
 	}
 	@RequestMapping(value = "chal", method = RequestMethod.GET)
-	public String chell() {
-	
+	public String chell(challchampick cp, challchampban cb, HttpServletRequest req) {
+		//rdao.banpicks(cb, cp, req);
+		req.setAttribute("contentPage", "rate/rateMain.jsp");
+	//	req.setAttribute("summonerPage", "rateResult.jsp");
 		
-		return "rate/testpage";
-	}
+		return "index";
+	}	
 	@RequestMapping(value = "challlist", method = RequestMethod.GET)
 	public String chelllistupdate(challlist c, HttpServletRequest req) {
 	rdao.challsave(c, req);
-		
-		return "rate/testpage";
+	req.setAttribute("contentPage", "rate/rateMain.jsp");
+	req.setAttribute("summonerPage", "nore.jsp");
+		return "index";
 	}
-//	@RequestMapping(value = "challlist", method = RequestMethod.GET)
-//	public String chelllistupdate(challlist c, HttpServletRequest req) {
-//		rdao.challsave(c, req);
-//		
-//		return "rate/testpage";
-//	}
+
 	
 
 
-//	@RequestMapping(value = "login", method = RequestMethod.GET)
-//	public String login(HttpServletRequest req) {
-//		req.setAttribute("contentPage", "login/login.jsp");
-//		return "index";
-//	}
+	@RequestMapping(value = "login", method = RequestMethod.GET)
+	public String login(HttpServletRequest req) {
+		req.setAttribute("contentPage", "login/login.jsp");
+		return "index";
+	}
 	
-//	@RequestMapping(value = "loginsuccess", method = RequestMethod.POST)
-//	public String loginSuccess(HttpServletRequest req) {
-//		req.setAttribute("contentPage", "login/loginsuccess.jsp");
-//		return "index";
-//	}
-//	
-//	@RequestMapping(value = "login.go", method = RequestMethod.POST)
-//	public String loginGo(userID u, HttpServletRequest req) {
-//		ldao.login(u, req);
-//		req.setAttribute("contentPage", "search.jsp");
-//		return "index";
-//	}
-//	
-//	@RequestMapping(value = "logout", method = RequestMethod.GET)
-//	public String logout(HttpServletRequest req, HttpServletResponse res) {
-//		ldao.logout(req, res);
-//		req.setAttribute("contentPage", "search.jsp");
-//		return "index";
-//	}
-//	
-//	
-//	@RequestMapping(value = "join", method = RequestMethod.GET)
-//	public String join( HttpServletRequest req) {
-//		
-//		req.setAttribute("contentPage", "login/join.jsp");
-//		return "index";
-//	}
-//	
-//	
-//	@RequestMapping(value = "join.go", method = RequestMethod.POST)
-//	public String joinGo(userID u,HttpServletRequest req) {
-//		ldao.join(u,req);
-//		req.setAttribute("contentPage", "login/login.jsp");
-//		return "index";
-//	}
-//	
+	@RequestMapping(value = "loginsuccess", method = RequestMethod.POST)
+	public String loginSuccess(HttpServletRequest req) {
+		req.setAttribute("contentPage", "login/loginsuccess.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "login.go", method = RequestMethod.POST)
+	public String loginGo(userID u, HttpServletRequest req) {
+		ldao.login(u, req);
+		req.setAttribute("contentPage", "search.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "logout", method = RequestMethod.GET)
+	public String logout(HttpServletRequest req, HttpServletResponse res) {
+		ldao.logout(req, res);
+		req.setAttribute("contentPage", "search.jsp");
+		return "index";
+	}
+	
+	
+	@RequestMapping(value = "join", method = RequestMethod.GET)
+	public String join( HttpServletRequest req) {
+		
+		req.setAttribute("contentPage", "login/join.jsp");
+		return "index";
+	}
+	
+	
+	@RequestMapping(value = "join.go", method = RequestMethod.POST)
+	public String joinGo(userID u,HttpServletRequest req) {
+		ldao.join(u,req);
+		req.setAttribute("contentPage", "login/login.jsp");
+		return "index";
+	}
+	
 //	@RequestMapping(value = "loginsuccess", method = RequestMethod.POST)
 //	public String callback(HttpServletRequest req) throws GeneralSecurityException, IOException {
 //			try {
@@ -173,9 +176,8 @@ public class HomeController {
 //			JacksonFactory jsonFactory = new JacksonFactory();
 //			
 //		GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(transport, jsonFactory)
-//		    // Specify the CLIENT_ID of the app that accesses the backend:
-//		    .setAudience(Collections.singletonList("696606451912-1qpdbt2mgtl7lpnqn67pmrv3v5k2ocri.apps.googleusercontent.com"))
-//		    // Or, if multiple clients access the backend:
+//	    // Specify the CLIENT_ID of the app that accesses the backend:
+//		    .setAudience(Collections.singletonList("696606451912-1qpdbt2mgtl7lpnqn67pmrv3v5k2ocri.apps.googleusercontent.com"))/		    // Or, if multiple clients access the backend:
 //		    //.setAudience(Arrays.asList(CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3))
 //		    .build();
 //
@@ -215,22 +217,27 @@ public class HomeController {
 //			}
 //		return "";
 	@RequestMapping(value = "challgamereg", method = RequestMethod.GET)
-	public String chellgamereg(challlist c, GameId g) {
+	public String chellgamereg(challlist c, GameId g,HttpServletRequest req) {
 		rdao.getchallmatchlist(c, g);
-		
-		return "rate/testpage";
+		req.setAttribute("contentPage", "rate/rateMain.jsp");
+		req.setAttribute("summonerPage", "nore.jsp");
+		return "index";
 	}
 	@RequestMapping(value = "champreg", method = RequestMethod.GET)
 	public String champ(challchampick cp, challchampban cb, GameId g, HttpServletRequest req) {
 		rdao.champreg(cb, cp, g);
 		req.setAttribute("regr", "챔프등록됨");
-		return "rate/testpage"; 
+		req.setAttribute("contentPage", "rate/rateMain.jsp");
+		req.setAttribute("summonerPage", "nore.jsp");
+		return "index"; 
 	}
 	@RequestMapping(value = "champresult", method = RequestMethod.GET)
 	public String champre(challchampick cp, challchampban cb, HttpServletRequest req) {
 		dao.apiver(req);
-		rdao.banpicks(cb, cp, req);;
-		return "rate/test2page";
+		rdao.banpicks(cb, cp, req);
+		req.setAttribute("contentPage", "rate/rateMain.jsp");
+		req.setAttribute("summonerPage", "rateResult.jsp");
+		return "index";
 	}
 
 }

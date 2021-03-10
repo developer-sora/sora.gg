@@ -29,10 +29,12 @@
 </c:if>
 <c:if test="${nowgame eq 2}">
 <a href="ingame?sname=${sname }"> 인게임 정보</a>
+<a href="#"><button>게임 목록 갱신</button></a>
 </c:if>
 <c:if test="${nodata eq 2 }">
 입력하신 소환사를 찾을수 없거나 라이엇 API 서버에 문제가 있습니다. 
 </c:if>
+
 
 <jsp:include page="${summonerPage}"></jsp:include>
 

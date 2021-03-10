@@ -25,6 +25,7 @@ select * from user_id where u_email = #{u_email}
 insert into toprankeruser values(#{s_name}, #{s_aid})
 </insert>
 
+
 <select id="getchall" resultType="gg.sora.otherDTO.challlist">
 select * from toprankeruser
 </select>

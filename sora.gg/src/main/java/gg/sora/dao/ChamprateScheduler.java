@@ -19,22 +19,24 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 
-import gg.sora.otherDTO.ChampionName;
 import gg.sora.otherDTO.GameId;
 import gg.sora.otherDTO.challchampban;
 import gg.sora.otherDTO.challchampick;
 import gg.sora.otherDTO.challlist;
 
-public class RankerRateDAO {
-
+@EnableScheduling
+@Configuration
+public class ChamprateScheduler {
+	
 	@Autowired
 	private SqlSession ss;
-	@Autowired
-	private champ champ;
 
 	String api = "RGAPI-a531df28-32d7-4b3e-bbf7-78897704cbd4";
-
+	@Scheduled(cron = "0 0 1 * * *")
 	private Connection getConnection() {
 		String dburl = "jdbc:oracle:thin:@localhost:1521:xe";
 		try {
@@ -66,7 +68,7 @@ public class RankerRateDAO {
 		}
 
 	}
-
+	@Scheduled(cron = "6 2 1 * * *")
 	public ArrayList<String> challlist() {
 		ArrayList<String> topchall = new ArrayList<String>();
 
@@ -93,7 +95,7 @@ public class RankerRateDAO {
 
 		return topchall;
 	}
-
+	@Scheduled(cron = "15 4 1 * * *")
 	public void challsave(challlist c, HttpServletRequest request) {
 		ArrayList<String> csnl = challlist(); // 챌린저 소환사 이름 리스트
 
@@ -139,7 +141,7 @@ public class RankerRateDAO {
 		}
 
 	}
-
+	@Scheduled(cron = "30 6 1 * * *")
 	public void getchallmatchlist(challlist c, GameId g) {
 		try {
 			con = getConnection();
@@ -190,7 +192,7 @@ public class RankerRateDAO {
 		}
 
 	}
-
+	@Scheduled(cron = "45 8 1 * * *")
 	public void champreg(challchampban cb ,challchampick cp, GameId g) {
 		try {
 			con = getConnection();
@@ -265,30 +267,4 @@ public class RankerRateDAO {
 		}
 
 	}
-
-	
-	
-public void banpicks(challchampban cb ,challchampick cp,HttpServletRequest req) {
-ArrayList<challchampban> challbans = ss.getMapper(Mapper.class).getchallban(cb);
-ArrayList<challchampick> challpicks =ss.getMapper(Mapper.class).getchallpick(cp);
-ArrayList<ChampionName> bannames = new ArrayList<ChampionName>();
-ArrayList<ChampionName> picknames = new ArrayList<ChampionName>();
-
-for (int i = 0; i < 5; i++) {
-	ChampionName cn1 = new ChampionName();
-cn1.setChampionEn(champ.champnameEn(challbans.get(i).getBenchamp()));
-cn1.setChampionKr(champ.champnameKr(challbans.get(i).getBenchamp()));	
-	bannames.add(cn1);
-}
-for (int i = 0; i < 5; i++) {
-	ChampionName cn2 = new ChampionName();
-	cn2.setChampionEn(champ.champnameEn(challpicks.get(i).getPickchamp()));	
-	cn2.setChampionKr(champ.champnameKr(challpicks.get(i).getPickchamp()));	
-	picknames.add(cn2);
-}
-
-
-	req.setAttribute("cbl", bannames);
-	req.setAttribute("cpl", picknames);
-}
 }

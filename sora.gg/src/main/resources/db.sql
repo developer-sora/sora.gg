@@ -39,3 +39,16 @@ select * from user_id;
 SELECT banchamp, COUNT(*) FROM champban GROUP BY banchamp;
 SELECT banchamp, COUNT(*) FROM champban GROUP BY banchamp HAVING COUNT(*)>5 order by count(*) desc;
 >>>>>>> refs/remotes/origin/main
+
+
+
+
+create table matchlist(
+gameId number (15) primary key,
+queue varchar2 (30char) not null,
+gametime varchar2 (30char) not null,
+championEn varchar2(15char) not null,
+championKr varchar2(30char) not null,
+position varchar2(15char) not null,
+win varchar2(9char) not null
+);
