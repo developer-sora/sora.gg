@@ -18,10 +18,10 @@ select * from toprankeruser
 select * from toprankergame
 </select>
 <select id="getchallban" resultType="gg.sora.otherDTO.challchampban">
-SELECT banchamp, COUNT(*) FROM champban GROUP BY banchamp HAVING COUNT(*)>5 order by count(*) desc;
+SELECT banchamp, COUNT(*) FROM champban GROUP BY banchamp HAVING COUNT(*)>5 order by count(*) desc
 </select>
 <select id="getchallpick" resultType="gg.sora.otherDTO.challchampick">
-SELECT pickchamp, COUNT(*) FROM champpick GROUP BY pickchamp HAVING COUNT(*)>5 order by count(*) desc;
+SELECT pickchamp, COUNT(*) FROM champpick GROUP BY pickchamp HAVING COUNT(*)>5 order by count(*) desc
 </select>
 
 <insert id="gameidreg" parameterType="gg.sora.otherDTO.GameId">

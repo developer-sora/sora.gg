@@ -108,5 +108,10 @@ public class HomeController {
 		req.setAttribute("regr", "챔프등록됨");
 		return "rate/testpage";
 	}
+	@RequestMapping(value = "champresult", method = RequestMethod.GET)
+	public String champre(challchampick cp, challchampban cb, HttpServletRequest req) {
+		rdao.banpicks(cb, cp, req);;
+		return "rate/test2page";
+	}
 
 }

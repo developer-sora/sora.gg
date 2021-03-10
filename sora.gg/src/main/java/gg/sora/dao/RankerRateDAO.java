@@ -267,9 +267,15 @@ public class RankerRateDAO {
 
 	
 	
-public void banpicks(challchampban cb ,challchampick cp) {
+public void banpicks(challchampban cb ,challchampick cp, HttpServletRequest req) {
 ArrayList<challchampban> challbans = ss.getMapper(Mapper.class).getchallban(cb);
 ArrayList<challchampick> challpicks =ss.getMapper(Mapper.class).getchallpick(cp);
-	
+
+System.out.println(challbans.get(0).getBenchamp());;
+System.out.println(challbans.get(1).getBenchamp());;
+System.out.println(challbans.get(2).getBenchamp());;
+System.out.println(challbans.get(3).getBenchamp());;
+	req.setAttribute("cbl", challbans);
+	req.setAttribute("cpl", challpicks);
 }
 }
