@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-${sessionScope.loginUser.u_name }<p>
-<button onclick="logout()">로그아웃</button>
+<a href="Login">
+<button>로그인</button>
+</a>
 </body>
 </html>

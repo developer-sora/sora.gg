@@ -2,6 +2,7 @@ package gg.sora.dao;
 
 import java.util.ArrayList;
 
+import gg.sora.dto.userID;
 import gg.sora.otherDTO.GameId;
 import gg.sora.otherDTO.challchampban;
 import gg.sora.otherDTO.challchampick;
@@ -13,6 +14,9 @@ public interface Mapper {
 
 	public ArrayList<challlist> getchall(challlist c);
 
+	public int join(userID u);
+
+	public userID getUserByID(userID u);
 	public int gameidreg(GameId g);
 
 	public ArrayList<GameId> getchallgameid(GameId g);

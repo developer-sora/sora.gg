@@ -60,9 +60,9 @@
 
 			value="jdbc:oracle:thin:@localhost:1521:xe" />
 
-		<beans:property name="username" value="test2" />
+		<beans:property name="username" value="sa" />
 
-		<beans:property name="password" value="test2" />
+		<beans:property name="password" value="sa" />
 
 	</beans:bean>
 
@@ -106,11 +106,12 @@
 
 	</beans:bean>
 
-	<beans:bean id="a" class="gg.sora.dao.champ"></beans:bean>
-	<beans:bean id="b" class="gg.sora.dao.QueAndPo"></beans:bean>
 	<beans:bean id="c" class="gg.sora.dao.RunAndSpell"></beans:bean>
+	<beans:bean id="b" class="gg.sora.dao.QueAndPo"></beans:bean>
+	<beans:bean id="a" class="gg.sora.dao.champ"></beans:bean>
 	<beans:bean id="d" class="gg.sora.dao.DAO"></beans:bean>
 	<beans:bean id="e" class="gg.sora.dao.timelineDAO"></beans:bean>
 	<beans:bean id="f" class="gg.sora.dao.RankerRateDAO"></beans:bean>
+	<beans:bean id="g" class="gg.sora.dao.LoginDAO"></beans:bean>
 <!--  -->
 </beans:beans>

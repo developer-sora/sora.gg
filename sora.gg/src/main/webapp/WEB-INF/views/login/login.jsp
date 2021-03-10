@@ -6,7 +6,7 @@
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <meta name="google-signin-client_id"
 	content="696606451912-1qpdbt2mgtl7lpnqn67pmrv3v5k2ocri.apps.googleusercontent.com">
-<script>
+<!-- <script>
 	function onSignIn(googleUser) {
 		var id_token = googleUser.getAuthResponse().id_token;
 		var profile = googleUser.getBasicProfile();
@@ -53,22 +53,25 @@
 		auth2.disconnect();
 
 	}
-</script>
+</script> -->
 <title>Insert title here</title>
 </head>
 <body>
 
 	<div class="g-signin2" data-onsuccess="onSignIn"></div>
-	<a href="#" onclick="signOut();">Sign out</a>
+	<!-- <a href="#" onclick="signOut();">Sign out</a> -->
+	<form action="login.go" name="f" method="post" onsubmit="return logincheck();">
 	<p>
 
-		ID : <input>
+		Email : <input name = "u_email" placeholder="Email">
 	<p>
-		PW : <input>
+		Password : <input name = "u_password" placeholder="Password">
 	<p>
+		<input style="width: 25px;" name="autologin" type="checkbox">로그인 상태 유지
 		<button>로그인</button>
 	<p>
-		<button>회원가입</button>
+	</form>
+		<button onclick="location.href='join'">회원가입</button>
 	<p>
 </body>
 </html>
