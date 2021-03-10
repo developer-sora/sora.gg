@@ -107,7 +107,7 @@ public class HomeController {
 	public String champ(challchampick cp, challchampban cb, GameId g, HttpServletRequest req) {
 		rdao.champreg(cb, cp, g);
 		req.setAttribute("regr", "챔프등록됨");
-		return "rate/testpage";
+		return "rate/testpage"; 
 	}
 	@RequestMapping(value = "champresult", method = RequestMethod.GET)
 	public String champre(challchampick cp, challchampban cb, HttpServletRequest req) {
