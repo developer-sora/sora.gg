@@ -31,12 +31,12 @@ import gg.sora.otherDTO.challlist;
 @EnableScheduling
 @Configuration
 public class ChamprateScheduler {
-	
+
 	@Autowired
 	private SqlSession ss;
 
 	String api = "RGAPI-a531df28-32d7-4b3e-bbf7-78897704cbd4";
-	@Scheduled(cron = "0 0 1 * * *")
+
 	private Connection getConnection() {
 		String dburl = "jdbc:oracle:thin:@localhost:1521:xe";
 		try {
@@ -68,6 +68,7 @@ public class ChamprateScheduler {
 		}
 
 	}
+
 	@Scheduled(cron = "6 2 1 * * *")
 	public ArrayList<String> challlist() {
 		ArrayList<String> topchall = new ArrayList<String>();
@@ -95,6 +96,7 @@ public class ChamprateScheduler {
 
 		return topchall;
 	}
+
 	@Scheduled(cron = "15 4 1 * * *")
 	public void challsave(challlist c, HttpServletRequest request) {
 		ArrayList<String> csnl = challlist(); // 챌린저 소환사 이름 리스트
@@ -141,6 +143,7 @@ public class ChamprateScheduler {
 		}
 
 	}
+
 	@Scheduled(cron = "30 6 1 * * *")
 	public void getchallmatchlist(challlist c, GameId g) {
 		try {
@@ -192,8 +195,9 @@ public class ChamprateScheduler {
 		}
 
 	}
+
 	@Scheduled(cron = "45 8 1 * * *")
-	public void champreg(challchampban cb ,challchampick cp, GameId g) {
+	public void champreg(challchampban cb, challchampick cp, GameId g) {
 		try {
 			con = getConnection();
 			pstmt = con.prepareStatement("TRUNCATE table champban");
@@ -236,29 +240,30 @@ public class ChamprateScheduler {
 					JSONObject purpleban = (JSONObject) purplebans.get(j);
 					cb.setBenchamp(Integer.parseInt(blueban.get("championId").toString()));
 					cb.setBenchamp(Integer.parseInt(purpleban.get("championId").toString()));
-					
-		if (ss.getMapper(Mapper.class).banreg(cb) == 1) {
-				System.out.println("챔프밴 등록 성공" +j);
-				} else {
-				System.out.println("챔프밴 등록 실패" +j);
-			}
-					
+
+					if (ss.getMapper(Mapper.class).banreg(cb) == 1) {
+						System.out.println("챔프밴 등록 성공" + j);
+					} else {
+						System.out.println("챔프밴 등록 실패" + j);
+					}
+
 				}
-				
-				//JSONArray participantIdentities = (JSONArray) loldata.get("participantIdentities");
+
+				// JSONArray participantIdentities = (JSONArray)
+				// loldata.get("participantIdentities");
 				JSONArray participants = (JSONArray) loldata.get("participants"); // 구성원 데이터
 				for (int j = 0; j < 10; j++) {
-					
+
 					JSONObject participant = (JSONObject) participants.get(j); // 인게임 정보
-				cp.setPickchamp(Integer.parseInt(participant.get("championId").toString()));
-				
-				if (ss.getMapper(Mapper.class).pickreg(cp)== 1) {
-				System.out.println("챔프픽 등록 성공" +j);
-				} else {
-					System.out.println("챔프픽 등록 실패" +j);
+					cp.setPickchamp(Integer.parseInt(participant.get("championId").toString()));
+
+					if (ss.getMapper(Mapper.class).pickreg(cp) == 1) {
+						System.out.println("챔프픽 등록 성공" + j);
+					} else {
+						System.out.println("챔프픽 등록 실패" + j);
+					}
 				}
-				}
-				
+
 			} catch (Exception e) {
 				e.printStackTrace();
 				return;
@@ -267,4 +272,89 @@ public class ChamprateScheduler {
 		}
 
 	}
+
+	@Scheduled(cron = "55 10 1 2 * *")
+	public void delmonthchamplist() {
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement("TRUNCATE table monthchampban");
+			pstmt.execute();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		} finally {
+			close(con, pstmt);
+		}
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement("TRUNCATE table monthchamppick");
+			pstmt.execute();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		} finally {
+			close(con, pstmt);
+		}
+		
+		
+	}
+	
+	
+	@Scheduled(cron = "0 11 1 * * *")
+	public void monthchampreg(challchampban cb, challchampick cp, GameId g) {
+
+		ArrayList<GameId> gameIds = ss.getMapper(Mapper.class).getchallgameid(g);
+		for (int i = 0; i < gameIds.size(); i++) {
+			try {
+				String url = "https://kr.api.riotgames.com/lol/match/v4/matches/";
+				String mid = gameIds.get(i).getG_number();
+				url = url + mid + "?api_key=" + api;
+				URL u = new URL(url);
+				HttpURLConnection huc = (HttpsURLConnection) u.openConnection();
+				InputStream is = huc.getInputStream();
+				InputStreamReader isr = new InputStreamReader(is, "utf-8");
+
+				JSONParser jp = new JSONParser();
+				JSONObject loldata = (JSONObject) jp.parse(isr);
+				JSONArray teams = (JSONArray) loldata.get("teams");
+				JSONObject blueteaminfo = (JSONObject) teams.get(0); // 블루팀 데이터
+				JSONObject purpleteaminfo = (JSONObject) teams.get(1); // 레드팀 데이터
+				JSONArray bluebans = (JSONArray) blueteaminfo.get("bans");
+				JSONArray purplebans = (JSONArray) purpleteaminfo.get("bans");
+				for (int j = 0; j < 5; j++) {
+					JSONObject blueban = (JSONObject) bluebans.get(j);
+					JSONObject purpleban = (JSONObject) purplebans.get(j);
+					cb.setBenchamp(Integer.parseInt(blueban.get("championId").toString()));
+					cb.setBenchamp(Integer.parseInt(purpleban.get("championId").toString()));
+
+					if (ss.getMapper(Mapper.class).monthbanreg(cb) == 1) {
+						System.out.println("달챔프밴 등록 성공" + j);
+					} else {
+						System.out.println("달챔프밴 등록 실패" + j);
+					}
+
+				}
+
+				// JSONArray participantIdentities = (JSONArray)
+				// loldata.get("participantIdentities");
+				JSONArray participants = (JSONArray) loldata.get("participants"); // 구성원 데이터
+				for (int j = 0; j < 10; j++) {
+
+					JSONObject participant = (JSONObject) participants.get(j); // 인게임 정보
+					cp.setPickchamp(Integer.parseInt(participant.get("championId").toString()));
+
+					if (ss.getMapper(Mapper.class).monthpickreg(cp) == 1) {
+						System.out.println("달챔프픽 등록 성공" + j);
+					} else {
+						System.out.println("달챔프픽 등록 실패" + j);
+					}
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+				return;
+			}
+
+		}
+
+	}
+
 }

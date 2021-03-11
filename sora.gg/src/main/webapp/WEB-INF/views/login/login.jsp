@@ -91,6 +91,7 @@
         </div>
         <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">LOGIN</button>
 		<a href ="email.do">회원가입</a>
+		<a href ="main">홈으로</a>
       </form>
       
 		</div>

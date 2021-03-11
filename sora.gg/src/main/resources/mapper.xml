@@ -49,9 +49,11 @@ insert into champpick values(${pickchamp})
 insert into champban values(${banchamp})
 </insert>
 
+<insert parameterType="gg.sora.otherDTO.challchampban" id="monthbanreg"> insert into monthchampban values(${banchamp}) </insert>
+<insert parameterType="gg.sora.otherDTO.challchampick" id="monthpickreg"> insert into monthchamppick values(${pickchamp}) </insert>
+<select id="monthgetchallgameid" resultType="gg.sora.otherDTO.GameId"> select * from toprankergame </select>
+<select id="monthgetchallban" resultType="gg.sora.otherDTO.challchampban"> SELECT banchamp, COUNT(*) FROM monthchampban GROUP BY banchamp HAVING COUNT(*)>5 order by count(*) desc </select>
 
-
-
-
+<select id="monthgetchallpick" resultType="gg.sora.otherDTO.challchampick"> SELECT pickchamp, COUNT(*) FROM monthchamppick GROUP BY pickchamp HAVING COUNT(*)>5 order by count(*) desc </select>
 
 </mapper>

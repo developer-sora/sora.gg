@@ -7,15 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import gg.sora.dao.DAO;
 import gg.sora.dao.LoginDAO;
 import gg.sora.dao.RankerRateDAO;
 import gg.sora.dao.timelineDAO;
-<<<<<<< HEAD
-=======
 import gg.sora.dto.tip;
->>>>>>> branch 'main' of https://github.com/developer-sora/sora.gg.majimak.git
 import gg.sora.dto.userID;
 import gg.sora.otherDTO.GameId;
 import gg.sora.otherDTO.challchampban;
@@ -33,10 +31,6 @@ public class HomeController {
 	private RankerRateDAO rdao;
 	@Autowired
 	private LoginDAO ldao;
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'main' of https://github.com/developer-sora/sora.gg.majimak.git
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpServletRequest req) {
@@ -124,7 +118,6 @@ public class HomeController {
 		req.setAttribute("summonerPage", "nore.jsp");
 		return "index";
 	}
-<<<<<<< HEAD
 //	@RequestMapping(value = "challlist", method = RequestMethod.GET)
 //	public String chelllistupdate(challlist c, HttpServletRequest req) {
 //		rdao.challsave(c, req);
@@ -133,13 +126,13 @@ public class HomeController {
 //	}
 	
 
-=======
->>>>>>> branch 'main' of https://github.com/developer-sora/sora.gg.majimak.git
 
 	@RequestMapping(value = "login", method = RequestMethod.GET)
-	public String login(HttpServletRequest req) {
-		req.setAttribute("contentPage", "login/login.jsp");
-		return "index";
+	public ModelAndView login(HttpServletRequest req) {
+		
+	      ModelAndView mv = new ModelAndView();
+	        mv.setViewName("login/login");
+	        return mv;
 	}
 
 	@RequestMapping(value = "loginsuccess", method = RequestMethod.POST)
@@ -168,56 +161,51 @@ public class HomeController {
 		req.setAttribute("contentPage", "login/join.jsp");
 		return "index";
 	}
-<<<<<<< HEAD
 	
-=======
-
->>>>>>> branch 'main' of https://github.com/developer-sora/sora.gg.majimak.git
 	@RequestMapping(value = "join.go", method = RequestMethod.POST)
-	public String joinGo(userID u, HttpServletRequest req) {
+	public ModelAndView joinGo(userID u, HttpServletRequest req) {
 		ldao.join(u, req);
-		req.setAttribute("contentPage", "login/login.jsp");
-		return "index";
+		 ModelAndView mv = new ModelAndView();
+	        mv.setViewName("login/login");
+	        return mv;
+		
 	}
 
-<<<<<<< HEAD
-		// (Receive idTokenString by HTTPS POST)
 
-		String idTokenString = req.getParameter("idtoken");
-		GoogleIdToken idToken = verifier.verify(idTokenString);
-		
-		if (idToken != null) {
-		  Payload payload = idToken.getPayload();
-
-		  // Print user identifier
-		  String userId = payload.getSubject();
-		  System.out.println("User ID: " + userId);
-
-		  // Get profile information from payload
-		  String email = payload.getEmail();
-		  boolean emailVerified = Boolean.valueOf(payload.getEmailVerified());
-		  String name = (String) payload.get("name");
+//		String idTokenString = req.getParameter("idtoken");
+//		GoogleIdToken idToken = verifier.verify(idTokenString);
+//		
+//		if (idToken != null) {
+//		  Payload payload = idToken.getPayload();
+//
+//		  // Print user identifier
+//		  String userId = payload.getSubject();
+//		  System.out.println("User ID: " + userId);
+//
+//		  // Get profile information from payload
+//		  String email = payload.getEmail();
+//		  boolean emailVerified = Boolean.valueOf(payload.getEmailVerified());
+//		  String name = (String) payload.get("name");
 //		  String pictureUrl = (String) payload.get("picture");
 //		  String locale = (String) payload.get("locale");
 //		  String familyName = (String) payload.get("family_name");
 //		  String givenName = (String) payload.get("given_name");
 
 		  
-		  System.out.println(email);
+//		  System.out.println(email);
 		  
 		  
 		  // Use or store profile information
 		  // ...
 		  
-		} else {
-		  System.out.println("Invalid ID token.");
-		}
-			}catch (Exception e) {
-				e.printStackTrace();
-			}
-		return "";
-	}	
-=======
+//		} else {
+//		  System.out.println("Invalid ID token.");
+//		}
+//			}catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//		return "";
+//	}	
 //	@RequestMapping(value = "loginsuccess", method = RequestMethod.POST)
 //	public String callback(HttpServletRequest req) throws GeneralSecurityException, IOException {
 //			try {
@@ -267,7 +255,7 @@ public class HomeController {
 //				e.printStackTrace();
 //			}
 //		return "";
->>>>>>> branch 'main' of https://github.com/developer-sora/sora.gg.majimak.git
+	
 	@RequestMapping(value = "challgamereg", method = RequestMethod.GET)
 	public String chellgamereg(challlist c, GameId g, HttpServletRequest req) {
 		rdao.getchallmatchlist(c, g);
@@ -280,7 +268,6 @@ public class HomeController {
 	public String champ(challchampick cp, challchampban cb, GameId g, HttpServletRequest req) {
 		rdao.champreg(cb, cp, g);
 		req.setAttribute("regr", "챔프등록됨");
-<<<<<<< HEAD
 		return "rate/testpage";
 	}
 	
@@ -288,10 +275,8 @@ public class HomeController {
 	public String community( HttpServletRequest req) {
 		
 		req.setAttribute("contentPage", "community/duo.jsp");
-=======
 		req.setAttribute("contentPage", "rate/rateMain.jsp");
 		req.setAttribute("summonerPage", "nore.jsp");
->>>>>>> branch 'main' of https://github.com/developer-sora/sora.gg.majimak.git
 		return "index";
 	}
 
@@ -353,4 +338,23 @@ public class HomeController {
 		req.setAttribute("tipPage", "champTip.jsp");
 		return "index";
 	}
+
+	   @RequestMapping(value = "monthchampreg", method = RequestMethod.GET)
+	   public String monthchampreg(challchampick cp, challchampban cb, GameId g, HttpServletRequest req) {
+	      rdao.monthchampreg(cb, cp, g);
+	      req.setAttribute("regr", "챔프등록됨");
+	      req.setAttribute("contentPage", "rate/rateMain.jsp");
+	      req.setAttribute("summonerPage", "nore.jsp");
+	      return "index"; 
+	   }
+	   @RequestMapping(value = "monthchampresult", method = RequestMethod.GET)
+	   public String monthchampresult(challchampick cp, challchampban cb, HttpServletRequest req) {
+	      dao.apiver(req);
+	      rdao.banpicks(cb, cp, req);
+	      rdao.monthbanpicks(cb, cp, req);
+	      req.setAttribute("contentPage", "rate/rateMain.jsp");
+	      req.setAttribute("summonerPage", "rateResult.jsp");
+	      return "index";
+	   }
+	
 }

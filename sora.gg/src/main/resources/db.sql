@@ -33,6 +33,7 @@ u_password varchar2 (20 char) not null
 );
 
 select * from user_id;
+DROP TABLE user_id CASCADE CONSTRAINT;
 =======
 -- 김길수 만드러짐
 SELECT banchamp, COUNT(*) FROM champban GROUP BY banchamp;
@@ -43,14 +44,13 @@ SELECT banchamp, COUNT(*) FROM champban GROUP BY banchamp HAVING COUNT(*)>5 orde
 
 
 
-
-create table matchlist(
-gameId number (15) primary key,
-queue varchar2 (30char) not null,
-gametime varchar2 (30char) not null,
-championEn varchar2(15char) not null,
-championKr varchar2(30char) not null,
-position varchar2(15char) not null,
-win varchar2(9char) not null
+create table monthtoprankergame (
+g_number number (15) primary key
 );
->>>>>>> branch 'main' of https://github.com/developer-sora/sora.gg.majimak.git
+
+create table monthchamppick (
+pickchamp number(10) not null
+);
+create table monthchampban (
+banchamp number(10) not null
+);

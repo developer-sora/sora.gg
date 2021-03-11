@@ -38,7 +38,7 @@ public class RankerRateDAO {
 	private Connection getConnection() {
 		String dburl = "jdbc:oracle:thin:@localhost:1521:xe";
 		try {
-			return DriverManager.getConnection(dburl, "test2", "test2");
+			return DriverManager.getConnection(dburl, "sa", "sa");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -265,6 +265,63 @@ public class RankerRateDAO {
 		}
 
 	}
+	public void monthchampreg(challchampban cb ,challchampick cp, GameId g) {
+		
+		
+		ArrayList<GameId> gameIds = ss.getMapper(Mapper.class).monthgetchallgameid(g);
+		for (int i = 0; i < gameIds.size(); i++) {
+			try {
+				String url = "https://kr.api.riotgames.com/lol/match/v4/matches/";
+				String mid = gameIds.get(i).getG_number();
+				url = url + mid + "?api_key=" + api;
+				URL u = new URL(url);
+				HttpURLConnection huc = (HttpsURLConnection) u.openConnection();
+				InputStream is = huc.getInputStream();
+				InputStreamReader isr = new InputStreamReader(is, "utf-8");
+				
+				JSONParser jp = new JSONParser();
+				JSONObject loldata = (JSONObject) jp.parse(isr);
+				JSONArray teams = (JSONArray) loldata.get("teams");
+				JSONObject blueteaminfo = (JSONObject) teams.get(0); // 블루팀 데이터
+				JSONObject purpleteaminfo = (JSONObject) teams.get(1); // 레드팀 데이터
+				JSONArray bluebans = (JSONArray) blueteaminfo.get("bans");
+				JSONArray purplebans = (JSONArray) purpleteaminfo.get("bans");
+				for (int j = 0; j < 5; j++) {
+					JSONObject blueban = (JSONObject) bluebans.get(j);
+					JSONObject purpleban = (JSONObject) purplebans.get(j);
+					cb.setBenchamp(Integer.parseInt(blueban.get("championId").toString()));
+					cb.setBenchamp(Integer.parseInt(purpleban.get("championId").toString()));
+					
+					if (ss.getMapper(Mapper.class).monthbanreg(cb) == 1) {
+						System.out.println("달챔프밴 등록 성공" +j);
+					} else {
+						System.out.println("달챔프밴 등록 실패" +j);
+					}
+					
+				}
+				
+				//JSONArray participantIdentities = (JSONArray) loldata.get("participantIdentities");
+				JSONArray participants = (JSONArray) loldata.get("participants"); // 구성원 데이터
+				for (int j = 0; j < 10; j++) {
+					
+					JSONObject participant = (JSONObject) participants.get(j); // 인게임 정보
+					cp.setPickchamp(Integer.parseInt(participant.get("championId").toString()));
+					
+					if (ss.getMapper(Mapper.class).monthpickreg(cp)== 1) {
+						System.out.println("달챔프픽 등록 성공" +j);
+					} else {
+						System.out.println("달챔프픽 등록 실패" +j);
+					}
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				return;
+			}
+			
+		}
+		
+	}
 
 	
 	
@@ -290,5 +347,34 @@ for (int i = 0; i < 5; i++) {
 
 	req.setAttribute("cbl", bannames);
 	req.setAttribute("cpl", picknames);
+}
+
+
+
+
+public void monthbanpicks(challchampban cb ,challchampick cp,HttpServletRequest req) {
+	ArrayList<challchampban> mchallbans = ss.getMapper(Mapper.class).monthgetchallban(cb);
+	ArrayList<challchampick> mchallpicks =ss.getMapper(Mapper.class).monthgetchallpick(cp);
+	ArrayList<ChampionName> bannames = new ArrayList<ChampionName>();
+	ArrayList<ChampionName> picknames = new ArrayList<ChampionName>();
+	
+	for (int i = 0; i < 5; i++) {
+		ChampionName cn3 = new ChampionName();
+		System.out.println("aa" + mchallbans.get(i).getBenchamp());
+		cn3.setChampionEn(champ.champnameEn(mchallbans.get(i).getBenchamp()));
+		cn3.setChampionKr(champ.champnameKr(mchallbans.get(i).getBenchamp()));	
+		bannames.add(cn3);
+	}
+	for (int i = 0; i < 5; i++) {
+		ChampionName cn4 = new ChampionName();
+		System.out.println("bb" + mchallpicks.get(i).getPickchamp());
+		cn4.setChampionEn(champ.champnameEn(mchallpicks.get(i).getPickchamp()));	
+		cn4.setChampionKr(champ.champnameKr(mchallpicks.get(i).getPickchamp()));	
+		picknames.add(cn4);
+	}
+	
+	
+	req.setAttribute("mcbl", bannames);
+	req.setAttribute("mcpl", picknames);
 }
 }

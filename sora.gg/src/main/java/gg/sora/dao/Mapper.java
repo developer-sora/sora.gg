@@ -29,6 +29,16 @@ public interface Mapper {
 
 	public ArrayList<challchampick> getchallpick(challchampick cp);
 
+	public int monthpickreg(challchampick cp);
+
+	public int monthbanreg(challchampban cb);
+
+	public int monthgameidreg(GameId g);
+	public ArrayList<GameId> monthgetchallgameid(GameId g);
+	public ArrayList<challchampban> monthgetchallban(challchampban cb);
+
+	public ArrayList<challchampick> monthgetchallpick(challchampick cp);
+
 
 	
 }
