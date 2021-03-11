@@ -238,7 +238,8 @@ public class HomeController {
 
 		dao.allChampion(req);
 
-		req.setAttribute("contentPage", "allChampion.jsp");
+		req.setAttribute("contentPage", "championSearch.jsp");
+		req.setAttribute("championPage", "allChampion.jsp");
 		return "index";
 	}
 
@@ -247,7 +248,8 @@ public class HomeController {
 
 		dao.rotationChampion(req);
 
-		req.setAttribute("contentPage", "rotation.jsp");
+		req.setAttribute("contentPage", "championSearch.jsp");
+		req.setAttribute("championPage", "rotation.jsp");
 		return "index";
 	}
 
@@ -267,13 +269,16 @@ public class HomeController {
 
 		dao.championSearch(req);
 
-		req.setAttribute("contentPage", "allChampion.jsp");
+		req.setAttribute("contentPage", "championSearch.jsp");
+		req.setAttribute("championPage", "allChampion.jsp");
 		return "index";
 	}
 
 	@RequestMapping(value = "regTip", method = RequestMethod.GET)
 	public String regTip(HttpServletRequest req) {
 
+		
+		
 		req.setAttribute("tipPage", "champTip.jsp");
 		return "index";
 	}

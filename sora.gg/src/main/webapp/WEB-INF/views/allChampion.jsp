@@ -9,24 +9,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div>
-		<div>
-			<a href="champion">모든 챔피언</a>
-		</div>
-		<div>
-			<a href="rotation">로테이션 챔피언</a>
-		</div>
-	</div>
-	<div style="width: 1500px;">
-		<h2>챔피언 목록</h2>
-		<div>
-			<form action="championSearch">
-				<input name="championName" placeholder="챔피언 검색">
-				<button>검색</button>
-			</form>
-		</div>
-	</div>
-		<hr>
 	<div style="width: 1600px;">
 		<c:forEach var="v" items="${val }">
 			<div id="result"

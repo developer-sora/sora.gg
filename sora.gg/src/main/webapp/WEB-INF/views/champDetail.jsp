@@ -30,7 +30,7 @@ ${passive.description}"
 
 	<table>
 		<tr>
-			<td>스킬&nbsp;&nbsp;</td>
+			<td>스킬&nbsp;&nbsp;&nbsp;</td>
 			<c:forEach var="c" items="${champSkillInfo }">
 				<td><img
 					title="${c.getSkillName() }
