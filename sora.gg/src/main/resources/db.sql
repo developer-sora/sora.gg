@@ -24,7 +24,6 @@ s_aid varchar2 (100 char) not null
 select * from  toprankeruser;
 DROP TABLE toprankeruser CASCADE CONSTRAINT;
 
-<<<<<<< HEAD
 -- 만드러짐
 
 create table user_id(
@@ -38,4 +37,3 @@ select * from user_id;
 -- 김길수 만드러짐
 SELECT banchamp, COUNT(*) FROM champban GROUP BY banchamp;
 SELECT banchamp, COUNT(*) FROM champban GROUP BY banchamp HAVING COUNT(*)>5 order by count(*) desc;
->>>>>>> refs/remotes/origin/main

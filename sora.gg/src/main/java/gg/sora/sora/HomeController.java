@@ -22,13 +22,10 @@ import gg.sora.dao.DAO;
 import gg.sora.dao.LoginDAO;
 import gg.sora.dao.RankerRateDAO;
 import gg.sora.dao.timelineDAO;
-<<<<<<< HEAD
 import gg.sora.dto.userID;
-=======
 import gg.sora.otherDTO.GameId;
 import gg.sora.otherDTO.challchampban;
 import gg.sora.otherDTO.challchampick;
->>>>>>> refs/remotes/origin/main
 import gg.sora.otherDTO.challlist;
 
 @Controller
@@ -42,7 +39,7 @@ public class HomeController {
 	private RankerRateDAO rdao;
 	@Autowired
 	private LoginDAO ldao;
-	
+
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpServletRequest req) {
@@ -115,7 +112,6 @@ public class HomeController {
 		
 		return "rate/testpage";
 	}
-<<<<<<< HEAD
 //	@RequestMapping(value = "challlist", method = RequestMethod.GET)
 //	public String chelllistupdate(challlist c, HttpServletRequest req) {
 //		rdao.challsave(c, req);
@@ -158,7 +154,6 @@ public class HomeController {
 		req.setAttribute("contentPage", "login/join.jsp");
 		return "index";
 	}
-	
 	
 	@RequestMapping(value = "join.go", method = RequestMethod.POST)
 	public String joinGo(userID u,HttpServletRequest req) {
@@ -217,7 +212,7 @@ public class HomeController {
 				e.printStackTrace();
 			}
 		return "";
-=======
+	}	
 	@RequestMapping(value = "challgamereg", method = RequestMethod.GET)
 	public String chellgamereg(challlist c, GameId g) {
 		rdao.getchallmatchlist(c, g);
@@ -229,7 +224,13 @@ public class HomeController {
 		rdao.champreg(cb, cp, g);
 		req.setAttribute("regr", "챔프등록됨");
 		return "rate/testpage";
->>>>>>> refs/remotes/origin/main
+	}
+	
+	@RequestMapping(value = "community", method = RequestMethod.GET)
+	public String community( HttpServletRequest req) {
+		
+		req.setAttribute("contentPage", "community/duo.jsp");
+		return "index";
 	}
 
 }
