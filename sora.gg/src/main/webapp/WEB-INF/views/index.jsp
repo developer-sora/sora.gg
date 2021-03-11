@@ -30,8 +30,13 @@
 
 <div class="container">
     <br/>
+    <a href="main">홈으로</a>
+    <a href="champion">챔피언</a>
+    <a href="rotation">로테이션 챔피언</a>
+    
 <a href="community">커뮤니티
 </a>    
+<a href="chal">통계보기</a>
 
 <c:choose>
 <c:when test="${sessionScope.loginUser eq null }">
@@ -53,6 +58,6 @@
 
  
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="board/js/bootstrap.js"></script>
+<script type="text/javascript" src="resources/board/js/bootstrap.js"></script>
 </body>
 </html>

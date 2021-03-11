@@ -470,7 +470,7 @@ public class champ {
 		case 526:
 			return "Rell";
 		case -1 :
-			return null;
+			return "No Ban";
 
 		default:
 			return "오류";

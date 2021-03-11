@@ -29,5 +29,6 @@ public interface Mapper {
 
 	public ArrayList<challchampick> getchallpick(challchampick cp);
 
+
 	
 }
