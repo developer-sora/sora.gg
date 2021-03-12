@@ -17,6 +17,8 @@
 </a>
 </c:when>
 <c:otherwise>
+
+
 <a href="write" >
 <button>글쓰기</button>
 </a>

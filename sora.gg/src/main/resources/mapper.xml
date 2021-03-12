@@ -21,6 +21,7 @@ select * from user_id where u_email = #{u_email}
 	WHERE u_email = #{u_email}
 </select>
 
+
 <insert id="challlistreg" parameterType="gg.sora.otherDTO.challlist">
 insert into toprankeruser values(#{s_name}, #{s_aid})
 </insert>

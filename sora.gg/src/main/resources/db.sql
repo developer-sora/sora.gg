@@ -3,6 +3,7 @@ g_number number (15) primary key
 );
 select * from toprankergame
 
+
  -- 김길수 만들어짐
 create table champpick (
 pickchamp number(10) not null
