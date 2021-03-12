@@ -10,7 +10,7 @@
 	
 	$(function() {
 		
-		$("#qt").change(function() {
+		$("#sumlist").change(function() {
 		/* 	alert($("#price1").val());
 			
 			alert($(this).children("option:selected").val()); */
@@ -20,29 +20,28 @@
 </script>
 </head>
 <body>
-<%-- 
-		<form>
-			<select id="qt">
-				<option>게임 타입</option>
-				<c:forEach var="" items="">
-				<option id="asd" value="440">자유 랭크게임</option>
-				<option id="asd" value="430">일반 게임</option>
-				<option id="asd" value="450">무작위 총력전</option>
+ <hr>
+			<select id="sumlist">
+				<option>소환사 명, 챔피언 선택</option>
+				<c:forEach var="pti" items="${partis}">
+				<option id="asd" value="${pti.participantId}">${pti.partisname }, ${pti.championKr }</option>
 				</c:forEach>
 			</select>
-		</form>
- --%>
-
+ 
+<br>
+<a href="killtimeline?mid=${param.mid }&sname=${param.sname}"><button>전체 킬 보기</button></a>
+<a href="matchdetail?mid=${param.mid }&sname=${param.sname}"><button>게임 정보로 돌아가기</button></a>
+<hr>
 	<c:forEach var="kv" items="${kv }">
 <p>${kv.timestamp }
 <br>
 		<img
 			src="https://ddragon.leagueoflegends.com/cdn/${curVer }/img/champion/${kv.killChampionEn}.png"
-			onerror="this.style.display='none';" height="30px" width="30px">
+			onerror="this.style.display='none';" height="50px" width="50px"> 
 kill
 <img
 			src="https://ddragon.leagueoflegends.com/cdn/${curVer }/img/champion/${kv.victimChampionEn }.png"
-			onerror="this.style.display='none';" height="30px" width="30px"> death
+			onerror="this.style.display='none';" height="50px" width="50px"> death
 		<br>
 <c:forEach var="as" items="${kv.assistList}">
 <c:if test="${as.assistChampionEn ne 'null'}">

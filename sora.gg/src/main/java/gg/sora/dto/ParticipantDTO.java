@@ -3,20 +3,14 @@ package gg.sora.dto;
 public class ParticipantDTO {
 
 	private int participantId;
-	private String sname;
+	private String partisname;
 	private String championKr;
 	private String championEn;
 
 	public ParticipantDTO() {
 	}
 
-	public ParticipantDTO(int participantId, String sname, String championKr, String championEn) {
-		super();
-		this.participantId = participantId;
-		this.sname = sname;
-		this.championKr = championKr;
-		this.championEn = championEn;
-	}
+	
 
 	public String getChampionKr() {
 		return championKr;
@@ -44,12 +38,28 @@ public class ParticipantDTO {
 		this.participantId = participantId;
 	}
 
-	public String getSname() {
-		return sname;
+
+
+	public String getPartisname() {
+		return partisname;
 	}
 
-	public void setSname(String sname) {
-		this.sname = sname;
+
+
+	public void setPartisname(String partisname) {
+		this.partisname = partisname;
 	}
+
+
+
+	public ParticipantDTO(int participantId, String partisname, String championKr, String championEn) {
+		super();
+		this.participantId = participantId;
+		this.partisname = partisname;
+		this.championKr = championKr;
+		this.championEn = championEn;
+	}
+
+
 
 }

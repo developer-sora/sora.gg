@@ -67,9 +67,17 @@
 
 			value="jdbc:oracle:thin:@localhost:1521:xe" />
 
+<<<<<<< HEAD
 		<beans:property name="username" value="yj" />
+=======
+		<beans:property name="username" value="test2" />
+>>>>>>> branch 'main' of https://github.com/developer-sora/sora.gg.majimak.git
 
+<<<<<<< HEAD
 		<beans:property name="password" value="yj" />
+=======
+		<beans:property name="password" value="test2" />
+>>>>>>> branch 'main' of https://github.com/developer-sora/sora.gg.majimak.git
 
 	</beans:bean>
 

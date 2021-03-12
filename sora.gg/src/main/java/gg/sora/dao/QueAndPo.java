@@ -38,15 +38,15 @@ public class QueAndPo {
 	public String position(Object lane, Object role) {
 		
 		if (role.equals("DUO_SUPPORT")) {
-			return "서포터";
+			return "SUP";
 		} else if (role.equals("DUO_CARRY")) {
-			return "원거리 딜러";
+			return "ADC";
 		} else if (lane.equals("MIDDLE")) {
-			return "미드";
+			return "MID";
 		} else if (lane.equals("JUNGLE")) {
-			return "정글";
+			return "JGL";
 		} else if (lane.equals("TOP")) {
-			 return "탑";
+			 return "TOP";
 		}
 		
 		

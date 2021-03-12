@@ -38,7 +38,7 @@ public class RankerRateDAO {
 	private Connection getConnection() {
 		String dburl = "jdbc:oracle:thin:@localhost:1521:xe";
 		try {
-			return DriverManager.getConnection(dburl, "sa", "sa");
+			return DriverManager.getConnection(dburl, "test2", "test2");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

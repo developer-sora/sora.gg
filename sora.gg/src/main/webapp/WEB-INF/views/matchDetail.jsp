@@ -26,9 +26,10 @@
 </head>
 
 <body>
-
+<br>
+<a href="search?sname=${param.sname }"><button>게임 목록으로 돌아가기</button></a>
+<br><br>
 <h1>${queueType }</h1>
-<h1><a href="killtimeline?mid=${param.mid }&sname=${sname}">킬 기록 보기</a></h1><br>${restartgame }
 <h3>${min }분 ${sec}초</h3>
 
 
@@ -57,23 +58,24 @@
 </div>
 
 </c:if>
-
+<br><br>
+<h1><a href="killtimeline?mid=${param.mid }&sname=${sname}"><button>킬 기록 보기</button></a></h1><br>${restartgame }
 
 
 <c:forEach items="${md }" var="md">
 
 <div style="border: 1px solid; float: left; width: 17%;" onclick="fn_spread('hiddenContent${md.summonerName }');">
 
-<h3>${md.summonerName }</h3>
+<h6>${md.summonerName }</h6>
 <c:if test="${md.win eq '승리'}">
-<h3 style="color:blue">승리</h3>
+<h5 style="color:blue">승리</h5>
 </c:if>
 <c:if test="${md.win eq '패배'}">
-<h3 style="color:red">패배</h3>
+<h5 style="color:red">패배</h5>
 </c:if>
 <table>
 <tr><td>
-챔피언 레벨 : ${md.champLevel }<br>
+lv : ${md.champLevel }<br>
 <a href="champDetail?championName=${md.championEn}">
 <img src="https://ddragon.leagueoflegends.com/cdn/${curVer }/img/champion/${md.championEn }.png" height="100px" width="100px" title="${md.championKr}">
 </a>
@@ -83,7 +85,7 @@
 <br>
 <img src="https://ddragon.leagueoflegends.com/cdn/img/${md.keyperks }" height="20px" width="20px"><img src="https://ddragon.leagueoflegends.com/cdn/img/${md.perkSubStyle }" height="20px" width="20px">
 </td></tr>
-<tr><td>K/D/A ${md.kills }/${md.deaths }/${md.assists }<br>${md.kda } 킬관여율 ${md.killper }</td><td>${md.position }</td></tr>
+<tr><td>K/D/A ${md.kills }/${md.deaths }/${md.assists }<br>${md.kda }<br> 킬관여율 ${md.killper }</td><td>${md.position }</td></tr>
 <tr>
 <td>
 
@@ -111,6 +113,9 @@ ${md.firstBloodKill } ${md.firstTowerKill }
 </table>
 
 </div>
-</c:forEach>
+</c:forEach><br><br><br>
+
+<div style="position: static;">
+</div>
 </body>
 </html>

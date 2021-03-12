@@ -52,11 +52,12 @@ public class timelineDAO {
 				JSONObject player = (JSONObject) participant.get("player");
 				dto.setChampionKr(chp.champnameKr(Integer.parseInt(participant1.get("championId").toString())));
 				dto.setChampionEn(chp.champnameEn(Integer.parseInt(participant1.get("championId").toString())));
-				dto.setSname(String.valueOf(player.get("summonerName")));
+				dto.setPartisname(String.valueOf(player.get("summonerName")));
 				dto.setParticipantId(i + 1);
 				participants.add(dto);
+				
 			}
-
+			request.setAttribute("partis", participants);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -68,17 +69,7 @@ public class timelineDAO {
 		ArrayList<ParticipantDTO> participants = gamedata(request);
 		ArrayList<KillVictimDTO> kv = new ArrayList<KillVictimDTO>();
 		ArrayList<AssistDTO> assi = new ArrayList<AssistDTO>();
-		for (ParticipantDTO p1 : participants) {
-			System.out.println(p1.getParticipantId());
-			System.out.println(p1.getSname());
-
-		}
-
-		for (int i = 0; i < participants.size(); i++) {
-			participants.get(i).getSname();
-
-		}
-
+System.out.println("소환사이름 그거임 "+participants.get(0).getPartisname());
 		try {
 			String mid = request.getParameter("mid");
 			String url = "https://kr.api.riotgames.com/lol/match/v4/timelines/by-match/";
@@ -89,7 +80,7 @@ public class timelineDAO {
 			HttpsURLConnection huc = (HttpsURLConnection) u.openConnection();
 			InputStream is = huc.getInputStream();
 			InputStreamReader isr = new InputStreamReader(is, "utf-8");
-
+			
 			JSONParser jp = new JSONParser();
 			JSONObject loldata = (JSONObject) jp.parse(isr);
 			JSONArray frames = (JSONArray) loldata.get("frames");
@@ -106,7 +97,6 @@ public class timelineDAO {
 						assi = new ArrayList<AssistDTO>();
 						JSONArray assist = (JSONArray) inevent.get("assistingParticipantIds");
 
-						System.out.println("밀리초 =" + inevent.get("timestamp"));
 
 						int sec = Integer.parseInt(inevent.get("timestamp").toString()) / 1000;
 						int min = sec / 60;
@@ -114,36 +104,36 @@ public class timelineDAO {
 						String timestamp = min + "분" + sec + "초";
 						dto1.setTimestamp(timestamp);
 
-						System.out.println("죽인놈 =" + inevent.get("killerId"));
-						System.out.println("죽인놈 =" + participants
-								.get(Integer.parseInt(inevent.get("killerId").toString()) - 1).getSname());
+					////	System.out.println("죽인놈 =" + inevent.get("killerId"));
+					//	System.out.println("죽인놈 =" + participants
+								//.get(Integer.parseInt(inevent.get("killerId").toString()) - 1).getSname());
 						dto1.setKillSname(
-								participants.get(Integer.parseInt(inevent.get("killerId").toString()) - 1).getSname());
+								participants.get(Integer.parseInt(inevent.get("killerId").toString()) - 1).getPartisname());
 						dto1.setKillChampionKr(participants
 								.get(Integer.parseInt(inevent.get("killerId").toString()) - 1).getChampionKr());
 						dto1.setKillChampionEn(participants
 								.get(Integer.parseInt(inevent.get("killerId").toString()) - 1).getChampionEn());
-						System.out.println("죽인놈 =" + participants
-								.get(Integer.parseInt(inevent.get("killerId").toString()) - 1).getChampionKr());
+					//	System.out.println("죽인놈 =" + participants
+							//	.get(Integer.parseInt(inevent.get("killerId").toString()) - 1).getChampionKr());
 
-						System.out.println("죽여진놈=" + inevent.get("victimId"));
+					//	System.out.println("죽여진놈=" + inevent.get("victimId"));
 						dto1.setVictimSname(
-								participants.get(Integer.parseInt(inevent.get("victimId").toString()) - 1).getSname());
+								participants.get(Integer.parseInt(inevent.get("victimId").toString()) - 1).getPartisname());
 						dto1.setVictimChampionKr(participants
 								.get(Integer.parseInt(inevent.get("victimId").toString()) - 1).getChampionKr());
 						dto1.setVictimChampionEn(participants
 								.get(Integer.parseInt(inevent.get("victimId").toString()) - 1).getChampionEn());
-						System.out.println("죽여진놈=" + participants
-								.get(Integer.parseInt(inevent.get("victimId").toString()) - 1).getSname());
+						//System.out.println("죽여진놈=" + participants
+						//		.get(Integer.parseInt(inevent.get("victimId").toString()) - 1).getSname());
 
 						for (int k = 0; k < assist.size(); k++) {
 							AssistDTO dto2 = new AssistDTO();
-							System.out.println("어시스트="
-									+ participants.get(Integer.parseInt(assist.get(k).toString()) - 1).getSname());
-							System.out.println("어시 챔프 이름"
-									+ participants.get(Integer.parseInt(assist.get(k).toString()) - 1).getChampionEn());
+							//System.out.println("어시스트="
+								//	+ participants.get(Integer.parseInt(assist.get(k).toString()) - 1).getSname());
+							//System.out.println("어시 챔프 이름"
+									//+ participants.get(Integer.parseInt(assist.get(k).toString()) - 1).getChampionEn());
 							dto2.setAssistSname(
-									participants.get(Integer.parseInt(assist.get(k).toString()) - 1).getSname());
+									participants.get(Integer.parseInt(assist.get(k).toString()) - 1).getPartisname());
 							dto2.setAssistChampionKr(
 									participants.get(Integer.parseInt(assist.get(k).toString()) - 1).getChampionKr());
 							dto2.setAssistChampionEn(
@@ -155,12 +145,8 @@ public class timelineDAO {
 						}
 
 						dto1.setAssistList(assi); // 이게 다 반복되서 드가는 중
-						System.out.println("****************");
-						System.out.println(dto1.getAssistList());
 						kv.add(dto1);
-//						request.setAttribute("assi", assi);
 
-						System.out.println("-----------------------------");
 					}
 
 				}
@@ -174,6 +160,9 @@ public class timelineDAO {
 
 			request.setAttribute("kv", kv);
 
+		//	request.setAttribute("partis", participants);
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -182,13 +171,14 @@ public class timelineDAO {
 
 	public void timelinesearch(HttpServletRequest request) {
 		dao.apiver(request);
+		String searchparti = request.getParameter("participant");
 		ArrayList<ParticipantDTO> participants = gamedata(request);
 		ArrayList<KillVictimDTO> kv = new ArrayList<KillVictimDTO>();
 		ArrayList<AssistDTO> assi = new ArrayList<AssistDTO>();
 
 
 		for (int i = 0; i < participants.size(); i++) {
-			participants.get(i).getSname();
+			participants.get(i).getPartisname();
 		}
 
 		try {
@@ -212,13 +202,15 @@ public class timelineDAO {
 
 				for (int j = 0; j < events.size(); j++) {
 					JSONObject inevent = (JSONObject) events.get(j);
+					KillVictimDTO dto1 = new KillVictimDTO();
+					assi = new ArrayList<AssistDTO>();
+					JSONArray assist = (JSONArray) inevent.get("assistingParticipantIds");
 
 					if (inevent.get("type").equals("CHAMPION_KILL")) {
-						KillVictimDTO dto1 = new KillVictimDTO();
-						assi = new ArrayList<AssistDTO>();
-						JSONArray assist = (JSONArray) inevent.get("assistingParticipantIds");
+						if (String.valueOf(inevent.get("killerId")).equals(searchparti)) {
+							
+						
 
-						System.out.println("밀리초 =" + inevent.get("timestamp"));
 
 						int sec = Integer.parseInt(inevent.get("timestamp").toString()) / 1000;
 						int min = sec / 60;
@@ -226,65 +218,43 @@ public class timelineDAO {
 						String timestamp = min + "분" + sec + "초";
 						dto1.setTimestamp(timestamp);
 
-						System.out.println("죽인놈 =" + inevent.get("killerId"));
-						System.out.println("죽인놈 =" + participants
-								.get(Integer.parseInt(inevent.get("killerId").toString()) - 1).getSname());
 						dto1.setKillSname(
-								participants.get(Integer.parseInt(inevent.get("killerId").toString()) - 1).getSname());
+								participants.get(Integer.parseInt(inevent.get("killerId").toString()) - 1).getPartisname());
 						dto1.setKillChampionKr(participants
 								.get(Integer.parseInt(inevent.get("killerId").toString()) - 1).getChampionKr());
 						dto1.setKillChampionEn(participants
 								.get(Integer.parseInt(inevent.get("killerId").toString()) - 1).getChampionEn());
-						System.out.println("죽인놈 =" + participants
-								.get(Integer.parseInt(inevent.get("killerId").toString()) - 1).getChampionKr());
 
-						System.out.println("죽여진놈=" + inevent.get("victimId"));
 						dto1.setVictimSname(
-								participants.get(Integer.parseInt(inevent.get("victimId").toString()) - 1).getSname());
+								participants.get(Integer.parseInt(inevent.get("victimId").toString()) - 1).getPartisname());
 						dto1.setVictimChampionKr(participants
 								.get(Integer.parseInt(inevent.get("victimId").toString()) - 1).getChampionKr());
 						dto1.setVictimChampionEn(participants
 								.get(Integer.parseInt(inevent.get("victimId").toString()) - 1).getChampionEn());
-						System.out.println("죽여진놈=" + participants
-								.get(Integer.parseInt(inevent.get("victimId").toString()) - 1).getSname());
 
 						for (int k = 0; k < assist.size(); k++) {
 							AssistDTO dto2 = new AssistDTO();
-							System.out.println("어시스트="
-									+ participants.get(Integer.parseInt(assist.get(k).toString()) - 1).getSname());
-							System.out.println("어시 챔프 이름"
-									+ participants.get(Integer.parseInt(assist.get(k).toString()) - 1).getChampionEn());
 							dto2.setAssistSname(
-									participants.get(Integer.parseInt(assist.get(k).toString()) - 1).getSname());
+									participants.get(Integer.parseInt(assist.get(k).toString()) - 1).getPartisname());
 							dto2.setAssistChampionKr(
 									participants.get(Integer.parseInt(assist.get(k).toString()) - 1).getChampionKr());
 							dto2.setAssistChampionEn(
 									participants.get(Integer.parseInt(assist.get(k).toString()) - 1).getChampionEn());
 
-//							System.out.println("어시스트 :" + assist.get(k));	
 							assi.add(dto2);
 
 						}
 
 						dto1.setAssistList(assi); // 이게 다 반복되서 드가는 중
-						System.out.println("****************");
-						System.out.println(dto1.getAssistList());
 						kv.add(dto1);
-//						request.setAttribute("assi", assi);
 
-						System.out.println("-----------------------------");
-					}
+						}	}
 
 				}
 			}
-			// request.setAttribute("assi", assi);
-			for (int i = 0; i < assi.size(); i++) {
-//				System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
-//				System.out.println(assi.get(i).getAssistChampionKr());
-//				System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
-			}
 
 			request.setAttribute("kv", kv);
+
 
 		} catch (Exception e) {
 			e.printStackTrace();
