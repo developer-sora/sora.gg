@@ -32,7 +32,7 @@
     <br/>
     <a href="main">홈으로</a>
     <a href="champion">챔피언</a>
-    <a href="rotation">로테이션 챔피언</a>
+    <a href="rotation">로테이션</a>
     
 <a href="community">커뮤니티
 </a>    
