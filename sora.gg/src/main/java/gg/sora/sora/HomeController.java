@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import gg.sora.dao.DAO;
 import gg.sora.dao.LoginDAO;
@@ -117,11 +118,21 @@ public class HomeController {
 		req.setAttribute("summonerPage", "nore.jsp");
 		return "index";
 	}
+//	@RequestMapping(value = "challlist", method = RequestMethod.GET)
+//	public String chelllistupdate(challlist c, HttpServletRequest req) {
+//		rdao.challsave(c, req);
+//		
+//		return "rate/testpage";
+//	}
+	
+
 
 	@RequestMapping(value = "login", method = RequestMethod.GET)
-	public String login(HttpServletRequest req) {
-		req.setAttribute("contentPage", "login/login.jsp");
-		return "index";
+	public ModelAndView login(HttpServletRequest req) {
+		
+	      ModelAndView mv = new ModelAndView();
+	        mv.setViewName("login/login");
+	        return mv;
 	}
 
 	@RequestMapping(value = "loginsuccess", method = RequestMethod.POST)
@@ -150,14 +161,51 @@ public class HomeController {
 		req.setAttribute("contentPage", "login/join.jsp");
 		return "index";
 	}
-
+	
 	@RequestMapping(value = "join.go", method = RequestMethod.POST)
-	public String joinGo(userID u, HttpServletRequest req) {
+	public ModelAndView joinGo(userID u, HttpServletRequest req) {
 		ldao.join(u, req);
-		req.setAttribute("contentPage", "login/login.jsp");
-		return "index";
+		 ModelAndView mv = new ModelAndView();
+	        mv.setViewName("login/login");
+	        return mv;
+		
 	}
 
+
+//		String idTokenString = req.getParameter("idtoken");
+//		GoogleIdToken idToken = verifier.verify(idTokenString);
+//		
+//		if (idToken != null) {
+//		  Payload payload = idToken.getPayload();
+//
+//		  // Print user identifier
+//		  String userId = payload.getSubject();
+//		  System.out.println("User ID: " + userId);
+//
+//		  // Get profile information from payload
+//		  String email = payload.getEmail();
+//		  boolean emailVerified = Boolean.valueOf(payload.getEmailVerified());
+//		  String name = (String) payload.get("name");
+//		  String pictureUrl = (String) payload.get("picture");
+//		  String locale = (String) payload.get("locale");
+//		  String familyName = (String) payload.get("family_name");
+//		  String givenName = (String) payload.get("given_name");
+
+		  
+//		  System.out.println(email);
+		  
+		  
+		  // Use or store profile information
+		  // ...
+		  
+//		} else {
+//		  System.out.println("Invalid ID token.");
+//		}
+//			}catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//		return "";
+//	}	
 //	@RequestMapping(value = "loginsuccess", method = RequestMethod.POST)
 //	public String callback(HttpServletRequest req) throws GeneralSecurityException, IOException {
 //			try {
@@ -207,6 +255,7 @@ public class HomeController {
 //				e.printStackTrace();
 //			}
 //		return "";
+	
 	@RequestMapping(value = "challgamereg", method = RequestMethod.GET)
 	public String chellgamereg(challlist c, GameId g, HttpServletRequest req) {
 		rdao.getchallmatchlist(c, g);
@@ -219,6 +268,13 @@ public class HomeController {
 	public String champ(challchampick cp, challchampban cb, GameId g, HttpServletRequest req) {
 		rdao.champreg(cb, cp, g);
 		req.setAttribute("regr", "챔프등록됨");
+		return "rate/testpage";
+	}
+	
+	@RequestMapping(value = "community", method = RequestMethod.GET)
+	public String community( HttpServletRequest req) {
+		
+		req.setAttribute("contentPage", "community/duo.jsp");
 		req.setAttribute("contentPage", "rate/rateMain.jsp");
 		req.setAttribute("summonerPage", "nore.jsp");
 		return "index";
@@ -233,4 +289,75 @@ public class HomeController {
 		return "index";
 	}
 
+<<<<<<< HEAD
+=======
+	@RequestMapping(value = "champion", method = RequestMethod.GET)
+	public String allChampion(HttpServletRequest req) {
+
+		dao.allChampion(req);
+
+		req.setAttribute("contentPage", "championSearch.jsp");
+		req.setAttribute("championPage", "allChampion.jsp");
+		return "index";
+	}
+
+	@RequestMapping(value = "rotation", method = RequestMethod.GET)
+	public String rotationChampion(HttpServletRequest req) {
+
+		dao.rotationChampion(req);
+
+		req.setAttribute("contentPage", "championSearch.jsp");
+		req.setAttribute("championPage", "rotation.jsp");
+		return "index";
+	}
+
+	@RequestMapping(value = "champDetail", method = RequestMethod.GET)
+	public String champDetail(tip t, HttpServletRequest req) {
+
+		dao.championPassive(req);
+		dao.championskill(req);
+
+		req.setAttribute("contentPage", "champDetail.jsp");
+		req.setAttribute("tipPage", "champTip.jsp");
+		return "index";
+	}
+
+	@RequestMapping(value = "championSearch", method = RequestMethod.GET)
+	public String championSearch(HttpServletRequest req) {
+
+		dao.championSearch(req);
+
+		req.setAttribute("contentPage", "championSearch.jsp");
+		req.setAttribute("championPage", "allChampion.jsp");
+		return "index";
+	}
+
+	@RequestMapping(value = "regTip", method = RequestMethod.GET)
+	public String regTip(HttpServletRequest req) {
+
+		
+		
+		req.setAttribute("tipPage", "champTip.jsp");
+		return "index";
+	}
+
+	   @RequestMapping(value = "monthchampreg", method = RequestMethod.GET)
+	   public String monthchampreg(challchampick cp, challchampban cb, GameId g, HttpServletRequest req) {
+	      rdao.monthchampreg(cb, cp, g);
+	      req.setAttribute("regr", "챔프등록됨");
+	      req.setAttribute("contentPage", "rate/rateMain.jsp");
+	      req.setAttribute("summonerPage", "nore.jsp");
+	      return "index"; 
+	   }
+	   @RequestMapping(value = "monthchampresult", method = RequestMethod.GET)
+	   public String monthchampresult(challchampick cp, challchampban cb, HttpServletRequest req) {
+	      dao.apiver(req);
+	      rdao.banpicks(cb, cp, req);
+	      rdao.monthbanpicks(cb, cp, req);
+	      req.setAttribute("contentPage", "rate/rateMain.jsp");
+	      req.setAttribute("summonerPage", "rateResult.jsp");
+	      return "index";
+	   }
+	
+>>>>>>> branch 'main' of https://github.com/developer-sora/sora.gg.majimak.git
 }

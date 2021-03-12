@@ -31,7 +31,19 @@ public interface Mapper {
 
 	public ArrayList<challchampick> getchallpick(challchampick cp);
 
+<<<<<<< HEAD
 	public List<tip> getAllTip(tip t);
+=======
+	public int monthpickreg(challchampick cp);
+
+	public int monthbanreg(challchampban cb);
+
+	public int monthgameidreg(GameId g);
+	public ArrayList<GameId> monthgetchallgameid(GameId g);
+	public ArrayList<challchampban> monthgetchallban(challchampban cb);
+
+	public ArrayList<challchampick> monthgetchallpick(challchampick cp);
+>>>>>>> branch 'main' of https://github.com/developer-sora/sora.gg.majimak.git
 
 
 	

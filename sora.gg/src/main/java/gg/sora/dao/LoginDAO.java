@@ -1,5 +1,7 @@
 package gg.sora.dao;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -27,6 +29,7 @@ public class LoginDAO {
 		
 		if (ss.getMapper(Mapper.class).join(u) == 1) {
 			req.setAttribute("r", "가입 성공!");
+			
 		} else {
 			req.setAttribute("r", "가입 실패");
 		}
@@ -59,10 +62,6 @@ public class LoginDAO {
 		
 	}
 	
-	public int idCheck(userID u) throws Exception {
-		int result = ss.selectOne("memberMapper.idCheck", u);
-		return result;
-	}
 	
 	
 }
