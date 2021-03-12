@@ -50,9 +50,10 @@ ${c.getTooltip() }
 	<br>
 
 
-	<form action="regTip">
+	<form action="champDetail">
 		<div id="searchArea">
 			<div id="writeArea">
+				<input name="${passive.name }" type="hidden" value="${passive.name }">
 				<textarea name="c_comment" placeholder="챔피언에 대한 팁을 남겨주세요."
 					style="width: 600px; height: 200px; resize: none; font-size: 15pt;"></textarea>
 				<br>

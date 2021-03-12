@@ -113,5 +113,6 @@
 	<beans:bean id="e" class="gg.sora.dao.timelineDAO"></beans:bean>
 	<beans:bean id="f" class="gg.sora.dao.RankerRateDAO"></beans:bean>
 	<beans:bean id="g" class="gg.sora.dao.LoginDAO"></beans:bean>
+	<beans:bean id="h" class="gg.sora.dao.championDAO"></beans:bean>
 <!--  -->
 </beans:beans>

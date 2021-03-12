@@ -1,18 +1,5 @@
 package gg.sora.dao;
 
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
-import javax.net.ssl.HttpsURLConnection;
-
-import org.apache.ibatis.session.SqlSession;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.springframework.beans.factory.annotation.Autowired;
-
 public class PersonalRateDAO {
 //// 닉 받은 애 목록 보기에 게임 불러오기 - > 두개 써서 승 패 불러오기
 //	@Autowired

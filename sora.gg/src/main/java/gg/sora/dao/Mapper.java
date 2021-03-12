@@ -1,7 +1,9 @@
 package gg.sora.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import gg.sora.dto.tip;
 import gg.sora.dto.userID;
 import gg.sora.otherDTO.GameId;
 import gg.sora.otherDTO.challchampban;
@@ -28,6 +30,8 @@ public interface Mapper {
 	public ArrayList<challchampban> getchallban(challchampban cb);
 
 	public ArrayList<challchampick> getchallpick(challchampick cp);
+
+	public List<tip> getAllTip(tip t);
 
 
 	
