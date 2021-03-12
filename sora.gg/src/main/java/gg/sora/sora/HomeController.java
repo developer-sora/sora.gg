@@ -288,59 +288,7 @@ public class HomeController {
 		req.setAttribute("summonerPage", "rateResult.jsp");
 		return "index";
 	}
-
-<<<<<<< HEAD
-=======
-	@RequestMapping(value = "champion", method = RequestMethod.GET)
-	public String allChampion(HttpServletRequest req) {
-
-		dao.allChampion(req);
-
-		req.setAttribute("contentPage", "championSearch.jsp");
-		req.setAttribute("championPage", "allChampion.jsp");
-		return "index";
-	}
-
-	@RequestMapping(value = "rotation", method = RequestMethod.GET)
-	public String rotationChampion(HttpServletRequest req) {
-
-		dao.rotationChampion(req);
-
-		req.setAttribute("contentPage", "championSearch.jsp");
-		req.setAttribute("championPage", "rotation.jsp");
-		return "index";
-	}
-
-	@RequestMapping(value = "champDetail", method = RequestMethod.GET)
-	public String champDetail(tip t, HttpServletRequest req) {
-
-		dao.championPassive(req);
-		dao.championskill(req);
-
-		req.setAttribute("contentPage", "champDetail.jsp");
-		req.setAttribute("tipPage", "champTip.jsp");
-		return "index";
-	}
-
-	@RequestMapping(value = "championSearch", method = RequestMethod.GET)
-	public String championSearch(HttpServletRequest req) {
-
-		dao.championSearch(req);
-
-		req.setAttribute("contentPage", "championSearch.jsp");
-		req.setAttribute("championPage", "allChampion.jsp");
-		return "index";
-	}
-
-	@RequestMapping(value = "regTip", method = RequestMethod.GET)
-	public String regTip(HttpServletRequest req) {
-
-		
-		
-		req.setAttribute("tipPage", "champTip.jsp");
-		return "index";
-	}
-
+	
 	   @RequestMapping(value = "monthchampreg", method = RequestMethod.GET)
 	   public String monthchampreg(challchampick cp, challchampban cb, GameId g, HttpServletRequest req) {
 	      rdao.monthchampreg(cb, cp, g);
@@ -359,5 +307,4 @@ public class HomeController {
 	      return "index";
 	   }
 	
->>>>>>> branch 'main' of https://github.com/developer-sora/sora.gg.majimak.git
 }
