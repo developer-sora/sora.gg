@@ -97,7 +97,6 @@ System.out.println("소환사이름 그거임 "+participants.get(0).getPartisnam
 						assi = new ArrayList<AssistDTO>();
 						JSONArray assist = (JSONArray) inevent.get("assistingParticipantIds");
 
-						System.out.println("밀리초 =" + inevent.get("timestamp"));
 
 						int sec = Integer.parseInt(inevent.get("timestamp").toString()) / 1000;
 						int min = sec / 60;
@@ -212,7 +211,6 @@ System.out.println("소환사이름 그거임 "+participants.get(0).getPartisnam
 							
 						
 
-						System.out.println("밀리초 =" + inevent.get("timestamp"));
 
 						int sec = Integer.parseInt(inevent.get("timestamp").toString()) / 1000;
 						int min = sec / 60;
