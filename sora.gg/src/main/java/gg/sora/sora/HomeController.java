@@ -315,5 +315,16 @@ public class HomeController {
 	      req.setAttribute("summonerPage", "rateResult.jsp");
 	      return "index";
 	   }
+	   
+		@RequestMapping(value = "killtimelinesearch", method = RequestMethod.GET)
+		public String kts( HttpServletRequest req) {
+			dao.sumsearch(req);
+			dao.ingamenow(req);
+			tdao.timelinesearch(req);
+			req.setAttribute("contentPage", "output.jsp");
+			req.setAttribute("summonerPage", "matchTimeline.jsp");
+			return "index";
+		}
+		
 	
 }

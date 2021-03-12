@@ -40,16 +40,18 @@
 파랑팀 밴<br>
 
 <c:forEach items="${bbls }" var="bl">
-
+<a href="champDetail?championName=${bl.bannedChampion}">
 <img src="https://ddragon.leagueoflegends.com/cdn/${curVer }/img/champion/${bl.bannedChampion }.png" title="${bl.bannedChampion }" onerror="this.style.display='none';" height="25px" width="25px">
-
+</a>
 </c:forEach>
 
 
 <br>빨강팀 밴<br>
 <c:forEach items="${pbls }" var="bl">
 
+<a href="champDetail?championName=${bl.bannedChampion}">
 <img src="https://ddragon.leagueoflegends.com/cdn/${curVer }/img/champion/${bl.bannedChampion }.png " title="${bl.bannedChampion }" onerror="this.style.display='none';" height="25px" width="25px">
+</a>
 
 </c:forEach>
 </div>
@@ -72,7 +74,10 @@
 <table>
 <tr><td>
 챔피언 레벨 : ${md.champLevel }<br>
-<img src="https://ddragon.leagueoflegends.com/cdn/${curVer }/img/champion/${md.championEn }.png" height="100px" width="100px" title="${md.championKr}"></td>
+<a href="champDetail?championName=${md.championEn}">
+<img src="https://ddragon.leagueoflegends.com/cdn/${curVer }/img/champion/${md.championEn }.png" height="100px" width="100px" title="${md.championKr}">
+</a>
+</td>
 <td>
 <img src="https://ddragon.leagueoflegends.com/cdn/${curVer}/img/spell/${md.spell1Id }" height="20px" width="20px"><img src="https://ddragon.leagueoflegends.com/cdn/${curVer}/img/spell/${md.spell2Id }" height="20px" width="20px">
 <br>

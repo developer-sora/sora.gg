@@ -25,13 +25,15 @@ import gg.sora.dto.tip;
 
 public class championDAO{
 	
-	String api = "RGAPI-a531df28-32d7-4b3e-bbf7-78897704cbd4";
-	HttpsURLConnection huc = null;
 	
 	@Autowired
 	private SqlSession ss;
 	
-	public static ArrayList<champName> allChampion(HttpServletRequest req) {
+	@Autowired
+	private champ chp;
+	HttpsURLConnection huc = null;
+	String api = "RGAPI-a531df28-32d7-4b3e-bbf7-78897704cbd4";
+	public ArrayList<champName> allChampion(HttpServletRequest req) {
 
 		try {
 
@@ -129,8 +131,8 @@ public class championDAO{
 
 				int champIdNum = Integer.parseInt(rotationChampNum + "");
 				cn.setNo(champIdNum);
-				cn.setName(champ.champnameEn(champIdNum));
-				cn.setNameKr(champ.champnameKr(champIdNum));
+				cn.setName(chp.champnameEn(champIdNum));
+				cn.setNameKr(chp.champnameKr(champIdNum));
 
 				champNames.add(cn);
 

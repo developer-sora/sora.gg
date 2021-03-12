@@ -10,10 +10,30 @@ public class KillVictimDTO {
 	private String victimSname;
 	private String victimChampionKr;
 	private String victimChampionEn;
+	private String participantId;
+	private String sname;
 	private ArrayList<AssistDTO> assistList;
 
 	public KillVictimDTO() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public String getSname() {
+		return sname;
+	}
+
+	public void setSname(String sname) {
+		this.sname = sname;
+	}
+
+
+
+	public String getParticipantId() {
+		return participantId;
+	}
+
+	public void setParticipantId(String participantId) {
+		this.participantId = participantId;
 	}
 
 	public KillVictimDTO(String timestamp, String killSname, String killChampionKr, String killChampionEn,

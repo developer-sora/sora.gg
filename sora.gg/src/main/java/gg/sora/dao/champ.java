@@ -1,7 +1,7 @@
 package gg.sora.dao;
 
 public class champ {
-	public static String champnameEn(int key) {
+	public String champnameEn(int key) {
 
 		
 
@@ -478,7 +478,7 @@ public class champ {
 		}
 		
 	}
-	public static String champnameKr(int key) {
+	public String champnameKr(int key) {
 		switch (key) {
 		case 266:
 			return "아트록스";

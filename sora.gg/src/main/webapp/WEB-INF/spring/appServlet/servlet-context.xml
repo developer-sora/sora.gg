@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+<beans:beans
+	xmlns="http://www.springframework.org/schema/mvc"
 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
 
-	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 
-	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:jee="http://www.springframework.org/schema/jee"
 
 	xmlns:aop="http://www.springframework.org/schema/aop"
 
@@ -48,13 +52,16 @@
 
 
 
-	<context:component-scan base-package="gg.sora.sora" />
+	<context:component-scan
+		base-package="gg.sora.sora" />
 
 
 
-	<beans:bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+	<beans:bean id="dataSource"
+		class="org.apache.commons.dbcp2.BasicDataSource">
 
-		<beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<beans:property name="driverClassName"
+			value="oracle.jdbc.driver.OracleDriver" />
 
 		<beans:property name="url"
 
@@ -78,11 +85,13 @@
 
 
 
-	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<beans:bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
 
 		<beans:property name="dataSource" ref="dataSource" />
 
-		<beans:property name="typeAliasesPackage" value="gg.sora.sora" />
+		<beans:property name="typeAliasesPackage"
+			value="gg.sora.sora" />
 
 		<beans:property name="mapperLocations">
 
@@ -90,6 +99,7 @@
 
 				<beans:value>classpath:mapper.xml</beans:value>
 				<beans:value>classpath:memberMapper.xml</beans:value>
+				<beans:value>classpath:boardMapper.xml</beans:value>
 
 			</beans:list>
 
@@ -99,7 +109,8 @@
 
 
 
-	<beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+	<beans:bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionTemplate">
 
 		<beans:constructor-arg name="sqlSessionFactory"
 
@@ -117,6 +128,6 @@
 	<beans:bean id="j" class="gg.sora.dao.championDAO"></beans:bean>
 	<beans:bean id="h" class="gg.sora.dao.MemberDAOImpl"></beans:bean>
 	<beans:bean id="i" class="gg.sora.dao.MemberServiceImpl"></beans:bean>
-<!--  -->
+
 
 </beans:beans>

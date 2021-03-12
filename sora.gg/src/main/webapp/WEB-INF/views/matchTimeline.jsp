@@ -6,8 +6,32 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+	
+	$(function() {
+		
+		$("#qt").change(function() {
+		/* 	alert($("#price1").val());
+			
+			alert($(this).children("option:selected").val()); */
+			location.href = "killtimelinesearch?sname=${param.sname}&mid=${param.mid}&participant="+$(this).children("option:selected").val();
+		});
+	});
+</script>
 </head>
 <body>
+<%-- 
+		<form>
+			<select id="qt">
+				<option>게임 타입</option>
+				<c:forEach var="" items="">
+				<option id="asd" value="440">자유 랭크게임</option>
+				<option id="asd" value="430">일반 게임</option>
+				<option id="asd" value="450">무작위 총력전</option>
+				</c:forEach>
+			</select>
+		</form>
+ --%>
 
 	<c:forEach var="kv" items="${kv }">
 <p>${kv.timestamp }
