@@ -30,18 +30,18 @@
  
 <br>
 <a href="killtimeline?mid=${param.mid }&sname=${param.sname}"><button>전체 킬 보기</button></a>
-<a href="matchdetail?mid=${param.mid }&sname=${param.sname}"><button>게임 스텟으로 돌아가기</button></a>
+<a href="matchdetail?mid=${param.mid }&sname=${param.sname}"><button>게임 정보로 돌아가기</button></a>
 <hr>
 	<c:forEach var="kv" items="${kv }">
 <p>${kv.timestamp }
 <br>
 		<img
 			src="https://ddragon.leagueoflegends.com/cdn/${curVer }/img/champion/${kv.killChampionEn}.png"
-			onerror="this.style.display='none';" height="30px" width="30px"> 
+			onerror="this.style.display='none';" height="50px" width="50px"> 
 kill
 <img
 			src="https://ddragon.leagueoflegends.com/cdn/${curVer }/img/champion/${kv.victimChampionEn }.png"
-			onerror="this.style.display='none';" height="30px" width="30px"> death
+			onerror="this.style.display='none';" height="50px" width="50px"> death
 		<br>
 <c:forEach var="as" items="${kv.assistList}">
 <c:if test="${as.assistChampionEn ne 'null'}">

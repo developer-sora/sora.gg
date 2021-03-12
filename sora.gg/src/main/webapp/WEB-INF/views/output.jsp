@@ -12,12 +12,13 @@
 
 
 
-
+<div style=" margin: 0 auto; width: 33%; padding: 10px; ">
 <form action="search">
 <input type="search" placeholder="소환사명" name="sname">
 <button type="submit">.GG</button>
 </form>
-
+</div>
+<div style="margin: 0 auto; width: 33%; padding: 10px;">
 <c:if test="${nodata ne 2 }">
 <img src="http://ddragon.leagueoflegends.com/cdn/${curVer }/img/profileicon/${sicon }.png" width="200px"><p>
 소환사 이름 : ${sname }<p>
@@ -39,6 +40,7 @@
 <c:if test="${nodata eq 2 }">
 입력하신 소환사를 찾을수 없거나 라이엇 API 서버에 문제가 있습니다. 
 </c:if>
+</div>
 
 
 <jsp:include page="${summonerPage}"></jsp:include>
