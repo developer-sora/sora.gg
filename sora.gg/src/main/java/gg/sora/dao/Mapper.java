@@ -19,6 +19,7 @@ public interface Mapper {
 	public int join(userID u);
 
 	public userID getUserByID(userID u);
+
 	public int gameidreg(GameId g);
 
 	public ArrayList<GameId> getchallgameid(GameId g);
@@ -31,17 +32,16 @@ public interface Mapper {
 
 	public ArrayList<challchampick> getchallpick(challchampick cp);
 
-	public List<tip> getAllTip(tip t);
 	public int monthpickreg(challchampick cp);
 
 	public int monthbanreg(challchampban cb);
 
 	public int monthgameidreg(GameId g);
+
 	public ArrayList<GameId> monthgetchallgameid(GameId g);
+
 	public ArrayList<challchampban> monthgetchallban(challchampban cb);
 
 	public ArrayList<challchampick> monthgetchallpick(challchampick cp);
 
-
-	
 }

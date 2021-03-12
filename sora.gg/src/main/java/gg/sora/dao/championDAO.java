@@ -23,16 +23,16 @@ import gg.sora.dto.champName;
 import gg.sora.dto.champSkillInfo;
 import gg.sora.dto.tip;
 
-public class championDAO{
-	
-	
+public class championDAO {
+
 	@Autowired
 	private SqlSession ss;
-	
+
 	@Autowired
 	private champ chp;
 	HttpsURLConnection huc = null;
 	String api = "RGAPI-a531df28-32d7-4b3e-bbf7-78897704cbd4";
+
 	public ArrayList<champName> allChampion(HttpServletRequest req) {
 
 		try {
@@ -155,7 +155,7 @@ public class championDAO{
 	public void championPassive(HttpServletRequest req) {
 
 		try {
-			String champName = req.getParameter("championName");
+			String champName = req.getParameter("c_name");
 
 			System.out.println(champName); // 챔피언 고유 넘버 -> 이름 변환 확인
 
@@ -223,7 +223,7 @@ public class championDAO{
 	public void championskill(HttpServletRequest req) {
 		try {
 
-			String champName = req.getParameter("championName");
+			String champName = req.getParameter("c_name");
 //			System.out.println(champName);
 
 			ArrayList<champSkillInfo> champSkillInfos = new ArrayList<champSkillInfo>();
@@ -800,7 +800,16 @@ public class championDAO{
 	// 쓰려다가 만 메소드
 
 	public void getAllTip(tip t, HttpServletRequest req) {
-		req.setAttribute("tips", ss.getMapper(Mapper.class).getAllTip(t));
+
+		List<tip> tips = ss.getMapper(TipMapper.class).getAllTip(t);
+
+		req.setAttribute("tips", tips);
+
+	}
+
+	public void regTip(tip t, HttpServletRequest req) {
+
+		ss.getMapper(TipMapper.class).regTip(t);
 
 	}
 

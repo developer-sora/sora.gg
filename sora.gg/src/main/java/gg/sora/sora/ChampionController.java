@@ -14,7 +14,7 @@ import gg.sora.dto.tip;
 public class ChampionController {
 
 	@Autowired
-	championDAO cDAO;
+	private championDAO cDAO;
 
 	@RequestMapping(value = "champion", method = RequestMethod.GET)
 	public String allChampion(HttpServletRequest req) {
@@ -37,10 +37,11 @@ public class ChampionController {
 	}
 
 	@RequestMapping(value = "champDetail", method = RequestMethod.GET)
-	public String champDetail(HttpServletRequest req) {
+	public String champDetail(tip t, HttpServletRequest req) {
 
 		cDAO.championPassive(req);
 		cDAO.championskill(req);
+		cDAO.getAllTip(t, req);
 
 		req.setAttribute("contentPage", "champDetail.jsp");
 		req.setAttribute("tipPage", "champTip.jsp");
@@ -60,10 +61,8 @@ public class ChampionController {
 	@RequestMapping(value = "regTip", method = RequestMethod.GET)
 	public String regTip(tip t, HttpServletRequest req) {
 
-		cDAO.getAllTip(t, req);
-
-		req.setAttribute("tipPage", "champTip.jsp");
-		return "index";
+		cDAO.regTip(t, req);
+		return champDetail(t, req);
 	}
 
 }

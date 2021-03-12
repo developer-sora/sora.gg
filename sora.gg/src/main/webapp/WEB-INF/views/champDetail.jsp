@@ -50,10 +50,10 @@ ${c.getTooltip() }
 	<br>
 
 
-	<form action="champDetail">
+	<form action="regTip">
 		<div id="searchArea">
 			<div id="writeArea">
-				<input name="${passive.name }" type="hidden" value="${passive.name }">
+				<input name="c_name" type="hidden" value="${passive.name }">
 				<textarea name="c_comment" placeholder="챔피언에 대한 팁을 남겨주세요."
 					style="width: 600px; height: 200px; resize: none; font-size: 15pt;"></textarea>
 				<br>
@@ -66,19 +66,5 @@ ${c.getTooltip() }
 		<jsp:include page="${tipPage }"></jsp:include>
 	</div>
 
-	<!-- 
-	<form action="sns.write">
-		<div id="searchArea">
-			<div id="writeArea">
-				<textarea name="c_comment"></textarea>
-				<br>
-				<button>글쓰기</button>
-			</div>
-			
-		  <input name="token" value="${token }" type="hidden">
-			 
-		</div>
-	</form>
- -->
 </body>
 </html>

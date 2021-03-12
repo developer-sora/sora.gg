@@ -14,11 +14,11 @@
 			<div id="result"
 				style="width:140px; margin-bottom: 20px; margin-right: 20px; float: left;">
 				<div align="center">
-					<a href="champDetail?championName=${v.name}"> <img id="icon2"
+					<a href="champDetail?c_name=${v.name}"> <img id="icon2"
 						src="https://ddragon.leagueoflegends.com/cdn/11.4.1/img/champion/${v.name}.png">
 					</a>
 				</div>
-				<div align="center"> ${v.nameKr}</div>
+				<div align="center"> <a href="go.detail?name=${v.name}">${v.nameKr}</a></div>
 			</div>
 		</c:forEach>
 	</div>

@@ -67,9 +67,9 @@
 
 			value="jdbc:oracle:thin:@localhost:1521:xe" />
 
-		<beans:property name="username" value="sa" />
+		<beans:property name="username" value="yj" />
 
-		<beans:property name="password" value="sa" />
+		<beans:property name="password" value="yj" />
 
 	</beans:bean>
 
@@ -100,6 +100,7 @@
 				<beans:value>classpath:mapper.xml</beans:value>
 				<beans:value>classpath:memberMapper.xml</beans:value>
 				<beans:value>classpath:boardMapper.xml</beans:value>
+				<beans:value>classpath:tipMapper.xml</beans:value>
 
 			</beans:list>
 
