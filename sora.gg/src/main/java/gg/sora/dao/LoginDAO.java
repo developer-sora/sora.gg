@@ -36,23 +36,24 @@ public class LoginDAO {
 		
 	}
 	
-	public void login(userID u, HttpServletRequest req) {
+	public boolean login(userID u, HttpServletRequest req) {
 		
 		userID dbu = ss.getMapper(Mapper.class).getUserByID(u);
 		
 		if(dbu!=null) {
 			if(dbu.getU_password().equals(u.getU_password())) {
-				req.setAttribute("r", "성공");
-				
 				req.getSession().setAttribute("loginUser", dbu);
 				req.getSession().setMaxInactiveInterval(60);
 				
+				return true;
 				
 			}else {
-				req.setAttribute("r", "pw오류");
+				req.setAttribute("lr", "비밀번호가 틀렸습니다.");
+				return false;
 			}
 		}else {
-			req.setAttribute("r", "Email 오류");
+			req.setAttribute("lr", "존재하지 않는 email입니다.");
+			return false;
 		}
 		
 	}

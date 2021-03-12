@@ -84,6 +84,7 @@
         <input type="text" id="uid" class="form-control" name = "u_email" placeholder="Email" required autofocus><BR>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="upw" class="form-control" name = "u_password" placeholder="Password" required><br>
+        ${lr }
         <div class="checkbox">
           <label>
             <input type="checkbox" value="remember-me"> 기억하기

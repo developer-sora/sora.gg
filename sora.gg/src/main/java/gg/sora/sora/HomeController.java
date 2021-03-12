@@ -142,10 +142,21 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "login.go", method = RequestMethod.POST)
-	public String loginGo(userID u, HttpServletRequest req) {
-		ldao.login(u, req);
-		req.setAttribute("contentPage", "search.jsp");
-		return "index";
+	public ModelAndView loginGo(userID u, HttpServletRequest req) {
+		
+		if(!ldao.login(u, req)) {
+		ModelAndView mv = new ModelAndView();
+        mv.setViewName("login/login");
+        return mv;
+        }
+		else { 
+			ModelAndView mv = new ModelAndView();
+			req.setAttribute("contentPage", "search.jsp");
+	        mv.setViewName("index");
+			 return mv;
+        }
+		
+		
 	}
 
 	@RequestMapping(value = "logout", method = RequestMethod.GET)
@@ -275,8 +286,6 @@ public class HomeController {
 	public String community( HttpServletRequest req) {
 		
 		req.setAttribute("contentPage", "community/duo.jsp");
-		req.setAttribute("contentPage", "rate/rateMain.jsp");
-		req.setAttribute("summonerPage", "nore.jsp");
 		return "index";
 	}
 
