@@ -809,7 +809,21 @@ public class championDAO {
 
 	public void regTip(tip t, HttpServletRequest req) {
 
-		ss.getMapper(TipMapper.class).regTip(t);
+		String token = req.getParameter("token");
+
+		String st = (String) req.getSession().getAttribute("successToken");
+
+		if (st != null && token.equals(st)) {
+			req.setAttribute("r", "글쓰기 실패(새로고침)");
+			return; 
+		}
+
+		String txt = t.getC_comment();
+		txt = txt.replace("\r\n", "<br>");
+		t.setC_comment(txt);
+
+		if (ss.getMapper(TipMapper.class).regTip(t) == 1) {
+			req.getSession().setAttribute("successToken", token);
 
 	}
 
