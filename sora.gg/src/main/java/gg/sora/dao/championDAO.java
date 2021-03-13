@@ -824,6 +824,7 @@ public class championDAO {
 
 		if (ss.getMapper(TipMapper.class).regTip(t) == 1) {
 			req.getSession().setAttribute("successToken", token);
+		}
 
 	}
 
