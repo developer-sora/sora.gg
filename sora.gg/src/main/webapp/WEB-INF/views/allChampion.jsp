@@ -18,7 +18,7 @@
 						src="https://ddragon.leagueoflegends.com/cdn/11.4.1/img/champion/${v.name}.png">
 					</a>
 				</div>
-				<div align="center"> <a href="go.detail?name=${v.name}">${v.nameKr}</a></div>
+				<div align="center">${v.nameKr}</div>
 			</div>
 		</c:forEach>
 	</div>

@@ -813,4 +813,10 @@ public class championDAO {
 
 	}
 
+	public void delTip(tip t, HttpServletRequest req) {
+
+		ss.getMapper(TipMapper.class).delTip(t);
+
+		}
+
 }

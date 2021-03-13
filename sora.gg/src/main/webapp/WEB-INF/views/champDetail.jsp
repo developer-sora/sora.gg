@@ -9,14 +9,19 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<div>
+		<div>
+			<img
+				src="https://ddragon.leagueoflegends.com/cdn/11.4.1/img/champion/${passive.name }.png">
+		</div>
+		<div>
+			<h3>${passive.nameKr }</h3>
+		</div>
+	</div>
 
-	<table>
-		<tr>
-			<td><img
-				src="https://ddragon.leagueoflegends.com/cdn/11.4.1/img/champion/${passive.name }.png"></td>
-			<td><h3>${passive.nameKr }</h3></td>
-		</tr>
-	</table>
+	<div>
+	
+	</div>
 
 	<table>
 		<tr>
@@ -61,7 +66,7 @@ ${c.getTooltip() }
 			</div>
 		</div>
 	</form>
-	
+
 	<div>
 		<jsp:include page="${tipPage }"></jsp:include>
 	</div>

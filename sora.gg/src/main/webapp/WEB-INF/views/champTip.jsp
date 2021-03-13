@@ -11,13 +11,16 @@
 <body>
 
 	<h1>champTip</h1>
+
 	<c:forEach items="${tips }" var="t">
-	<div>
 		<div
 			style="font-size: 15pt; text-align: center; width: 700px; height: 150px; background-color: white;">
-			${t.c_comment }</div>
-		<div style="float: right">${t.c_date }</div>
-	</div>
+			<div style="float: right;">${t.c_date }</div>
+			<div style="vertical-align: middle; text-align: center;">${t.c_comment }</div>
+			<div>
+				<button onclick="goDel(${t.c_no});">삭제</button>
+			</div>
+		</div>
 		<p>
 	</c:forEach>
 

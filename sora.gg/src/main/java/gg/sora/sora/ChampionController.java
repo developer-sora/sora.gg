@@ -62,7 +62,16 @@ public class ChampionController {
 	public String regTip(tip t, HttpServletRequest req) {
 
 		cDAO.regTip(t, req);
+		
 		return champDetail(t, req);
+	}
+
+	@RequestMapping(value = "delTip", method = RequestMethod.GET)
+	public String delTip(tip t, HttpServletRequest req) {
+		
+		cDAO.delTip(t, req);
+		
+		return allChampion(req);
 	}
 
 }
