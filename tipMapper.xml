@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="gg.sora.dao.TipMapper">
+
+	<select id="getAllTip" resultType="gg.sora.dto.tip"
+		parameterType="gg.sora.dto.tip">
+		select * from champion_tip
+		where c_name = #{c_name}
+	</select>
+
+	<insert id="regTip" parameterType="gg.sora.dto.tip">
+		insert into champion_tip
+		values (champion_tip_seq.nextval, null, #{c_name}, #{c_comment},
+		sysdate)
+	</insert>
+
+	<delete id="delTip" parameterType="gg.sora.dto.tip">
+		delete champion_tip
+		where c_no = #{c_no}
+	</delete>
+	
+</mapper>

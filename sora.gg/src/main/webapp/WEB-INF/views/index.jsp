@@ -25,6 +25,7 @@
 <title>sora.gg</title>
 <script type="text/javascript" src="resources/js/check.js"></script>
 <script type="text/javascript" src="resources/js/validCheck.js"></script>
+<<<<<<< HEAD
 <script type="text/javascript" src="resources/js/go.js"></script>
 </head>
 <body>
@@ -87,6 +88,35 @@
 </nav>
 
 
+=======
+<script type="text/javascript" src="resources/js/jQuery.js"></script>
+<script type="text/javascript" src="resources/js/go.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <br/>
+    <a href="main">홈으로</a>
+    <a href="champion">챔피언</a>
+    <a href="rotation">로테이션</a>
+    
+<a href="community">커뮤니티
+</a>    
+<a href="chal">통계보기</a>
+
+<c:choose>
+<c:when test="${sessionScope.loginUser eq null }">
+<a href="login" >
+<button>로그인</button>
+</a>
+</c:when>
+<c:otherwise>
+<a href="logout" >
+<button>로그아웃</button>
+</a>
+</c:otherwise>
+</c:choose>
+>>>>>>> branch 'main' of https://github.com/developer-sora/sora.gg.majimak.git
 
  <%-- 	<jsp:include page="${loginPage}"></jsp:include> --%>
     <jsp:include page="${contentPage}"></jsp:include>

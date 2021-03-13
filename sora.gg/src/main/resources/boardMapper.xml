@@ -4,6 +4,7 @@
 
 <insert id="writeMsg" parameterType="gg.sora.community.CMsg">
 		insert into sora_duo
+<<<<<<< HEAD
 		values(sora_duo_seq.nextval, #{u_email}, #{s_title},#{s_comment}, sysdate)
 	</insert>
 
@@ -25,6 +26,11 @@
 		delete sora_duo where s_no =
 		#{s_no}
 	</delete>
+=======
+		values(sora_duo_seq.nextval, #{u_email}, #{s_comment}, sysdate)
+	</insert>
+
+>>>>>>> branch 'main' of https://github.com/developer-sora/sora.gg.majimak.git
 
 
 

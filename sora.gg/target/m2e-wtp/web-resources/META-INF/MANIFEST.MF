@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: sodao
 Build-Jdk: 14
+=======
+Built-By: Youngjun Kim
+Build-Jdk: 14.0.2
+>>>>>>> branch 'main' of https://github.com/developer-sora/sora.gg.majimak.git
 Created-By: Maven Integration for Eclipse
 

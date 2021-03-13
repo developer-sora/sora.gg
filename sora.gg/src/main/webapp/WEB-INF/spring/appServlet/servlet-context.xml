@@ -67,6 +67,7 @@
 
 			value="jdbc:oracle:thin:@localhost:1521:xe" />
 
+<<<<<<< HEAD
 		<beans:property name="username" value="sa" />
 
 		<beans:property name="password" value="sa" />
@@ -130,6 +131,70 @@
 	<beans:bean id="h" class="gg.sora.dao.MemberDAOImpl"></beans:bean>
 	<beans:bean id="i" class="gg.sora.dao.MemberServiceImpl"></beans:bean>
 	<beans:bean id="k" class="gg.sora.community.CommunityDAO"></beans:bean>
+=======
+		<beans:property name="username" value="yj" />
+
+		<beans:property name="password" value="yj" />
+
+	</beans:bean>
+
+
+
+	<beans:bean id="transactionManager"
+
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+
+		<beans:property name="dataSource" ref="dataSource" />
+
+	</beans:bean>
+
+
+
+	<beans:bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+
+		<beans:property name="dataSource" ref="dataSource" />
+
+		<beans:property name="typeAliasesPackage"
+			value="gg.sora.sora" />
+
+		<beans:property name="mapperLocations">
+
+			<beans:list>
+
+				<beans:value>classpath:mapper.xml</beans:value>
+				<beans:value>classpath:memberMapper.xml</beans:value>
+				<beans:value>classpath:boardMapper.xml</beans:value>
+				<beans:value>classpath:tipMapper.xml</beans:value>
+
+			</beans:list>
+
+		</beans:property>
+
+	</beans:bean>
+
+
+
+	<beans:bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionTemplate">
+
+		<beans:constructor-arg name="sqlSessionFactory"
+
+			ref="sqlSessionFactory" />
+
+	</beans:bean>
+
+	<beans:bean id="c" class="gg.sora.dao.RunAndSpell"></beans:bean>
+	<beans:bean id="b" class="gg.sora.dao.QueAndPo"></beans:bean>
+	<beans:bean id="a" class="gg.sora.dao.champ"></beans:bean>
+	<beans:bean id="d" class="gg.sora.dao.DAO"></beans:bean>
+	<beans:bean id="e" class="gg.sora.dao.timelineDAO"></beans:bean>
+	<beans:bean id="f" class="gg.sora.dao.RankerRateDAO"></beans:bean>
+	<beans:bean id="g" class="gg.sora.dao.LoginDAO"></beans:bean>
+	<beans:bean id="j" class="gg.sora.dao.championDAO"></beans:bean>
+	<beans:bean id="h" class="gg.sora.dao.MemberDAOImpl"></beans:bean>
+	<beans:bean id="i" class="gg.sora.dao.MemberServiceImpl"></beans:bean>
+>>>>>>> branch 'main' of https://github.com/developer-sora/sora.gg.majimak.git
 
 
 </beans:beans>

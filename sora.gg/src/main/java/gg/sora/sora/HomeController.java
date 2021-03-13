@@ -282,6 +282,16 @@ public class HomeController {
 		return "rate/testpage";
 	}
 	
+<<<<<<< HEAD
+=======
+	@RequestMapping(value = "community", method = RequestMethod.GET)
+	public String community( HttpServletRequest req) {
+		
+		req.setAttribute("contentPage", "community/duo.jsp");
+		return "index";
+	}
+
+>>>>>>> branch 'main' of https://github.com/developer-sora/sora.gg.majimak.git
 	@RequestMapping(value = "champresult", method = RequestMethod.GET)
 	public String champre(challchampick cp, challchampban cb, HttpServletRequest req) {
 		dao.apiver(req);

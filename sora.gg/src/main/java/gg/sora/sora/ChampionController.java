@@ -41,6 +41,7 @@ public class ChampionController {
 
 		cDAO.championPassive(req);
 		cDAO.championskill(req);
+<<<<<<< HEAD
 		cDAO.getAllTip(t, req);
 
 		req.setAttribute("contentPage", "champDetail.jsp");
@@ -61,6 +62,30 @@ public class ChampionController {
 	@RequestMapping(value = "regTip", method = RequestMethod.GET)
 	public String regTip(tip t, HttpServletRequest req) {
 
+=======
+		TokenMaker.makeToken(req);
+		cDAO.getAllTip(t, req);
+
+		req.setAttribute("contentPage", "champDetail.jsp");
+		req.setAttribute("tipPage", "champTip.jsp");
+		return "index";
+	}
+
+	@RequestMapping(value = "championSearch", method = RequestMethod.GET)
+	public String championSearch(HttpServletRequest req) {
+
+		cDAO.championSearch(req);
+
+		req.setAttribute("contentPage", "championSearch.jsp");
+		req.setAttribute("championPage", "allChampion.jsp");
+		return "index";
+	}
+
+	@RequestMapping(value = "regTip", method = RequestMethod.GET)
+	public String regTip(tip t, HttpServletRequest req) {
+
+		TokenMaker.makeToken(req);
+>>>>>>> branch 'main' of https://github.com/developer-sora/sora.gg.majimak.git
 		cDAO.regTip(t, req);
 		
 		return champDetail(t, req);

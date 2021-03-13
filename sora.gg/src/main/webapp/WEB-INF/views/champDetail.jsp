@@ -66,10 +66,18 @@ ${c.getTooltip() }
 			</div>
 		</div>
 	</form>
+<<<<<<< HEAD
  
 	<div>
 		<jsp:include page="${tipPage }"></jsp:include>
 	</div>
  
+=======
+
+	<div>
+		<jsp:include page="${tipPage }"></jsp:include>
+	</div>
+
+>>>>>>> branch 'main' of https://github.com/developer-sora/sora.gg.majimak.git
 </body>
 </html>

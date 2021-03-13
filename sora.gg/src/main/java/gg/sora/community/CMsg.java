@@ -5,6 +5,7 @@ import java.util.Date;
 
 public class CMsg {
 	private String u_email;
+<<<<<<< HEAD
 	private String u_nickname;
 	
 	
@@ -59,6 +60,24 @@ public class CMsg {
 		this.u_nickname = u_nickname;
 	}
 
+=======
+	
+	private BigDecimal s_no;
+	private String s_comment;
+	private Date s_date;
+	
+	public CMsg() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public CMsg(String u_email, BigDecimal s_no, String s_comment, Date s_date) {
+		super();
+		this.u_email = u_email;
+		this.s_no = s_no;
+		this.s_comment = s_comment;
+		this.s_date = s_date;
+	}
+>>>>>>> branch 'main' of https://github.com/developer-sora/sora.gg.majimak.git
 
 
 	public String getU_email() {
