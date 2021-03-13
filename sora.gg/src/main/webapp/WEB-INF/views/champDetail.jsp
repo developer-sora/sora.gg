@@ -64,6 +64,8 @@ ${c.getTooltip() }
 				<br>
 				<button style="width: 100px; height: 50px;">글쓰기</button>
 			</div>
+			<input name="token" value="${token }" type="hidden">
+
 		</div>
 	</form>
 <<<<<<< HEAD
