@@ -41,6 +41,7 @@ public class ChampionController {
 
 		cDAO.championPassive(req);
 		cDAO.championskill(req);
+		TokenMaker.makeToken(req);
 		cDAO.getAllTip(t, req);
 
 		req.setAttribute("contentPage", "champDetail.jsp");
@@ -61,6 +62,7 @@ public class ChampionController {
 	@RequestMapping(value = "regTip", method = RequestMethod.GET)
 	public String regTip(tip t, HttpServletRequest req) {
 
+		TokenMaker.makeToken(req);
 		cDAO.regTip(t, req);
 		
 		return champDetail(t, req);
