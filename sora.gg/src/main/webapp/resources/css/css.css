@@ -1,0 +1,23 @@
+body{
+background: #ddd;
+margin-top: 100px;
+	}
+	
+	
+.title{
+	margin-top:100px;
+}	
+	
+.form-control-borderless {
+    border: none;
+}
+
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.row.justify-content-center{
+	margin-top:100px;
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="gg.sora.community.BoardMapper">
+
+<insert id="writeMsg" parameterType="gg.sora.community.CMsg">
+		insert into sora_duo
+		values(sora_duo_seq.nextval, #{u_email}, #{s_title},#{s_comment}, sysdate)
+	</insert>
+
+<select id="getAllMsg" resultType="gg.sora.community.CMsg">
+	select * from sora_duo,USER_ID where u_email = s_writer order by s_date DESC
+
+</select>
+
+
+<select id="getMsg" resultType="gg.sora.community.CMsg">
+	select * from sora_duo,USER_ID where u_email = s_writer and
+	(s_title = ${s_title} or s_comment=#{s_comment})
+	 order by s_date DESC
+
+</select>
+
+<delete id="delMsg" parameterType="gg.sora.community.CMsg">
+		delete sora_duo where s_no =
+		#{s_no}
+	</delete>
+
+
+
+</mapper>
