@@ -1,13 +1,15 @@
 # sora.gg
 ### ✨ 라이엇 API를 이용한 리그오브레전드 전적 검색/분석 사이트 ✨
 
+### 기술 스택
+<img src="https://img.shields.io/badge/JAVA-f89820?style=flat-badge&logo=openjdk&logoColor=white">  <img src="https://img.shields.io/badge/Spring-6DB33F?style=flat-badge&logo=spring&logoColor=white"> <img src="https://img.shields.io/badge/BootStrap-7952B3?style=flat-badge&logo=bootstrap&logoColor=white">
 ### 📌프로젝트 진행 기간
 2020년 2월 26일 ~ 3월 12일
 
 ### 👩‍💻 3팀(소라컴퍼니)
-- 박설아(팀장)
-- 김길수
-- 김영준
+- 팀장: 박설아
+- 팀원: 김길수
+- 팀원: 김영준
 
 ### 📌 개요
 라이엇 API를 이용하여 이용자가 게임 안에서 사용되는 소환사명을 검색시 해당 소환사명의 게임
