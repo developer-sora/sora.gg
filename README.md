@@ -2,7 +2,9 @@
 ### ✨ 라이엇 API를 이용한 리그오브레전드 전적 검색/분석 사이트 ✨
 
 ### 기술 스택
-<img src="https://img.shields.io/badge/JAVA-f89820?style=flat-badge&logo=openjdk&logoColor=white">  <img src="https://img.shields.io/badge/Spring-6DB33F?style=flat-badge&logo=spring&logoColor=white"> <img src="https://img.shields.io/badge/BootStrap-7952B3?style=flat-badge&logo=bootstrap&logoColor=white">
+<img src="https://img.shields.io/badge/JAVA-f89820?style=flat-badge&logo=openjdk&logoColor=white">  <img src="https://img.shields.io/badge/Spring-6DB33F?style=flat-badge&logo=spring&logoColor=white"> <img src="https://img.shields.io/badge/Oracle-F80000?style=flat-badge&logo=oracle&logoColor=white"> <img src="https://img.shields.io/badge/BootStrap-7952B3?style=flat-badge&logo=bootstrap&logoColor=white">
+
+
 ### 📌프로젝트 진행 기간
 2020년 2월 26일 ~ 3월 12일
 
